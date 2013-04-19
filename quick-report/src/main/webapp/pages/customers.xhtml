@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+<ui:composition>
+<h:form id="sorted-table" style="font-size: 8pt;">  
+    <p:dataTable id="dataTable" var="customer" value="#{sessionBean.custList}" sortMode="multiple" widgetVar="custTable"   
+            emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredCustomers}" 
+            rows="25" paginator="true" paginatorPosition="bottom" > 
+    	<f:facet name="header">  
+            <p:outputPanel style="float:right; text-align:center;"> 
+            	<h:graphicImage alt="search" library="images" name="magnifier.png" style="vertical-align:middle; margin:0 5px 0 0;"/>
+                <p:inputText id="globalFilter" onkeyup="custTable.filter()" style="width:150px; " />  
+            </p:outputPanel>  
+        </f:facet>   
+        <p:column id="Accountnun" sortBy="#{customer.accountnun}" headerText="Accountnun" filterBy="#{customer.accountnun}">  
+            <h:outputText value="#{customer.accountnun}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{customer.name}" headerText="Name" filterBy="#{customer.name}"> 
+            <h:outputText value="#{customer.name}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{customer.currency}" headerText="Currency" filterBy="#{customer.currency}">  
+            <h:outputText value="#{customer.currency}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{customer.country}" headerText="Country" filterBy="#{customer.country}">  
+            <h:outputText value="#{customer.country}" />  
+        </p:column>
+        
+        <p:column sortBy="#{customer.createddate}" headerText="Created Date" filterBy="#{customer.createddate}">  
+            <h:outputText value="#{customer.createddate}" />  
+        </p:column>
+        
+        <p:column sortBy="#{customer.createdby}" headerText="Who created" filterBy="#{customer.createdby}">  
+            <h:outputText value="#{customer.createdby}" />  
+        </p:column>  
+    </p:dataTable> 
+</h:form>
+</ui:composition>
+</body>
+</html>

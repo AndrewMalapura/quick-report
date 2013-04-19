@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="opo.vistec.entity.model.Contract" table="contract" >
+    	<id column="accountnun" name="accountnun" type="string" length="10" >
+    		<generator class="identity" />
+    	</id>
+        <property column="contractnumber" name="contractnumber" type="string" length="20"/>
+        <property column="contractdate" name="contract" type="date" />
+        <property column="contractcode" name="contractcode" type="string" length="10"/>
+        <property column="partneraccount" name="partneraccount" type="string" length="15"/>
+        <property column="currencycode" name="currencycode" type="string" length="3"/>
+        <property column="modifiedby" name="modifiedby" type="string" length="10"/>
+		<property column="modifieddate" name="modifieddate" type="date" />
+    </class>
+</hibernate-mapping>

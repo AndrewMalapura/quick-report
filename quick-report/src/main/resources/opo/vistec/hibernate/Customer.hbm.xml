@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="opo.vistec.entity.model.Customer" table="custtable" >
+    	<id column="accountnun" name="accountnun" type="string" length="15" >
+    		<generator class="identity" />
+    	</id>
+    	<property column="name" name="name" type="string" length="150" />
+        <property column="address" name="address" type="string" length="250" />
+		<property column="phone" name="phone" type="string" length="20" />
+		<property column="custgroup" name="custgroup" type="string" length="10"/>
+		<property column="currency" name="currency" type="string" length="3" />
+		<property column="country" name="country" type="string" length="10" />
+		<property column="zipcode" name="zipcode" type="string" length="10"/>
+		<property column="state" name="state" type="string" length="10"/>		
+		<property column="county" name="county" type="string" length="10" />
+		<property column="namealias" name="namealias" type="string" length="20" />
+		<property column="city" name="city" type="string" length="150" />
+		<property column="inn_ru" name="inn_ru" type="string" length="12" />
+		<property column="codeokpo_ru" name="codeokpo_ru" type="string" length="10" />	
+		<property column="regn0_nds_ua" name="regno_nds_ua" type="string" length="12" />
+		<property column="notresident_ua" name="notresident_ua" type="integer" />
+		<property column="modifieddate" name="modifieddate" type="date" />
+		<property column="modifiedby" name="modifiedby" type="string" length="10" />		
+		<property column="createddate" name="createddate" type="date" />
+		<property column="createdby" name="createdby" type="string" length="10" />
+		<property column="manager" name="manager" type="string" length="10" />
+    </class>
+</hibernate-mapping>

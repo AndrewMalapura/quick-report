@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="opo.vistec.auth.model.User" table="users" >
+    	<id column="login" name="login" type="string" length="20" >
+    		<generator class="identity" />
+    	</id>     
+        <property column="userid" name="userId" type="long" />
+        <property column="username" name="userName" type="string" length="10" />
+        <property column="userpassword" name="password" type="string" length="20" />
+    </class>
+</hibernate-mapping>

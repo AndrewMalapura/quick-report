@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="opo.vistec.entity.model.Invent" table="inventtable" >
+    	<id column="itemid" name="itemid" type="string" length="20" >
+    		<generator class="identity" />
+    	</id>
+        <property column="itemgroupid" name="itemgroupid" type="string" length="11"/>
+        <property column="itemname" name="itemname" type="string" length="150"/>
+        <property column="itemtype" name="itemtype" type="integer"/>
+        <property column="bomunitid" name="bomunitid" type="string" length="10"/>
+        <property column="modifieddate" name="modifieddate" type="date" />
+        <property column="modifiedby" name="modifiedby" type="string" length="5"/>
+        <property column="createddate" name="createddate" type="date" />
+		<property column="createdby" name="createdby" type="string" length="5" />
+		<property column="recid" name="recid" type="long"/>
+        <property column="locationunitid" name="locationunitid" type="string" length="10" />
+        <property column="salesunitid" name="salesunitid" type="string" length="10" />
+        <property column="saleslocationid" name="saleslocationid" type="string" length="10" />
+        <property column="nds" name="nds" type="integer"/>       
+    </class>
+</hibernate-mapping>

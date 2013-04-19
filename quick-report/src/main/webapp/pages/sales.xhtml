@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+<ui:composition>
+<h:form id="sorted-table" style="font-size: 8pt;">  
+    <p:dataTable id="salesTab" var="sales" value="#{sessionBean.salesList}" sortMode="multiple" widgetVar="saleTable"   
+            emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredSales}" 
+            rows="25" paginator="true" paginatorPosition="bottom" > 
+    	<f:facet name="header">  
+            <p:outputPanel style="float:right; text-align:center;"> 
+            	<h:graphicImage alt="search" library="images" name="magnifier.png" style="vertical-align:middle; margin:0 5px 0 0;"/>
+                <p:inputText id="globalFilter" onkeyup="saleTable.filter()" style="width:150px; " />  
+            </p:outputPanel>  
+        </f:facet>   
+        <p:column id="salesid" sortBy="#{sales.salesid}" headerText="Заказ" filterBy="#{sales.salesid}">  
+            <h:outputText value="#{sales.salesid}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{sales.custaccount.name}" headerText="Клиент" filterBy="#{sales.custaccount.name}"> 
+            <h:outputText value="#{sales.custaccount.name}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{sales.currencycode}" headerText="Валюта" filterBy="#{sales.currencycode}">  
+            <h:outputText value="#{sales.currencycode}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{sales.summa}" headerText="Сумма" filterBy="#{sales.summa}">  
+            <h:outputText value="#{sales.summa}" />  
+        </p:column>
+        
+        <p:column sortBy="#{sales.deliverydate}" headerText="Дата заказа" filterBy="#{sales.deliverydate}">  
+            <h:outputText value="#{sales.deliverydate}" />  
+        </p:column>
+        
+        <p:column sortBy="#{sales.contractaccount}" headerText="Контракт" filterBy="#{sales.contractaccount}">  
+            <h:outputText value="#{sales.contractaccount}" />  
+        </p:column>  
+    </p:dataTable> 
+</h:form>
+</ui:composition>
+</body>
+</html>

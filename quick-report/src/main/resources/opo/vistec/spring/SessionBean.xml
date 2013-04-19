@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+   	<bean id="userBO" 
+         class="opo.vistec.auth.impl.UserBoImpl" >
+   		<property name="userDAO" ref="userDAO" />
+   	</bean>
+ 
+   	<bean id="userDAO" 
+         class="opo.vistec.dao.impl.UserDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory" />
+   	</bean>
+   	
+   	<bean id="customerBO" 
+         class="opo.vistec.entity.impl.CustomerBoImpl" >
+   		<property name="customerDAO" ref="customerDAO" />
+   	</bean>
+ 
+   	<bean id="customerDAO" 
+         class="opo.vistec.dao.impl.CustomerDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory" />
+   	</bean>
+   	
+   	<bean id="salesBO" 
+         class="opo.vistec.entity.impl.SalesBoImpl" >
+   		<property name="salesDAO" ref="salesDAO" />
+   	</bean>
+ 
+   	<bean id="salesDAO" 
+         class="opo.vistec.dao.impl.SalesDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory" />
+   	</bean>
+   	
+   	<bean id="inventBO" 
+         class="opo.vistec.entity.impl.InventBoImpl" >
+   		<property name="inventDAO" ref="inventDAO" />
+   	</bean>
+ 
+   	<bean id="inventDAO" 
+         class="opo.vistec.dao.impl.InventDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory" />
+   	</bean>
+ 
+</beans>

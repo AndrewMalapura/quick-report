@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+<ui:composition>
+<h:form id="sorted-table" style="font-size: 8pt;">  
+    <p:dataTable id="inventTbl" var="invent" value="#{sessionBean.inventList}" sortMode="multiple" widgetVar="inventTable"   
+            emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredInvent}" 
+            rows="25" paginator="true" paginatorPosition="bottom" > 
+    	<f:facet name="header">  
+            <p:outputPanel style="float:right; text-align:center;"> 
+            	<h:graphicImage alt="search" library="images" name="magnifier.png" style="vertical-align:middle; margin:0 5px 0 0;"/>
+                <p:inputText id="globalFilter" onkeyup="inventTable.filter()" style="width:150px; " />  
+            </p:outputPanel>  
+        </f:facet>   
+        <p:column id="itemid" sortBy="#{invent.itemid}" headerText="ID" filterBy="#{invent.itemid}">  
+            <h:outputText value="#{invent.itemid}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{invent.itemname}" headerText="Название" filterBy="#{invent.itemname}"> 
+            <h:outputText value="#{invent.itemname}" />  
+        </p:column>  
+  
+        <p:column sortBy="#{invent.salesunitid}" headerText="Ед. измерения" filterBy="#{invent.salesunitid}">  
+            <h:outputText value="#{invent.salesunitid}" />  
+        </p:column> 
+        
+        <p:column sortBy="#{invent.nds}" headerText="НДС" filterBy="#{invent.nds}">  
+            <h:outputText value="#{invent.nds}" />  
+        </p:column>  
+    </p:dataTable> 
+</h:form>
+</ui:composition>
+</body>
+</html>

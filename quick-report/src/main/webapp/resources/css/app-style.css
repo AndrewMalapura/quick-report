@@ -1,0 +1,54 @@
+.order-table{   
+	border-collapse:collapse;
+}
+
+.order-table-header{
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:1px solid #BBBBBB;
+	padding:16px;
+}
+
+.order-table-odd-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #FFFFFFF;
+	border-top:1px solid #BBBBBB;
+}
+
+.order-table-even-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #F9F9F9;
+	border-top:1px solid #BBBBBB;
+}
+
+.ui-datatable .ui-column-filter{
+	display: none !important;
+}
+
+.ui-layout-north  .ui-layout-unit-content{
+	background-color: gray !important;
+	color: white !important;
+	text-align: center !important;
+}
+
+.ui-layout-west {
+    z-index:10 !important;
+    overflow:visible !important;
+}
+
+.ui-layout-west .ui-layout-unit-header{
+	 font: bold italic 110% serif !important;
+}
+
+.ui-layout-west .ui-panelmenu-header{
+	font:12pt/10pt bold !important;
+}
+
+.ui-layout-west .ui-layout-unit-content {
+	font:10pt/8pt bold sans-serif !important;
+    overflow:visible !important;
+}
+
+.icon-search { 
+    background-image:url("#{resource['images/magnifier.png']}"); 
+}

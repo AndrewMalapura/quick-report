@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="opo.vistec.entity.model.Sales" table="salestable" >
+    	<id column="salesid" name="salesid" type="string" length="20" >
+    		<generator class="identity" />
+    	</id>     
+        <many-to-one name="custaccount" class="opo.vistec.entity.model.Customer" column="custaccount" cascade="all" lazy="false"/>
+        <property column="deliverydate" name="deliverydate" type="date" />
+        <property column="currencycode" name="currencycode" type="string" length="3" />
+		<property column="recid" name="recid" type="long" />
+		<property column="approved" name="approved" type="integer" />
+		<property column="contractaccount" name="contractaccount" type="string" length="10" />
+		<property column="summa" name="summa" type="big_decimal" />
+		<property column="warrantdata" name="warrantdata" type="date" />
+		<property column="warrantwho" name="warrantwho" type="string" length="20" />
+		<property column="warrant" name="warrant" type="string" length="10" />
+		<property column="car" name="car" type="string" length="20" />
+		<property column="carnumber" name="carnumber" type="string" length="10" />
+		<property column="createdtime" name="createdtime" type="date" />
+		<property column="modifiedtime" name="modifiedtime" type="date" />
+		<property column="salesman" name="salesman" type="string" length="10" />
+    </class>
+</hibernate-mapping>

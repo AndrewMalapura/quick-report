@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+    	<h:outputStylesheet library="css" name="app-style.css" target="head" />
+    </h:head>
+    <h:body>
+<p:layout fullPage="true">
+<p:layoutUnit position="north" size="35">
+<p:outputPanel id="head" >
+<h:graphicImage alt="cepi" library="images" name="cepi.png"/>
+<h:outputText value="реализация &#171;Вистек&#187;" /> 
+</p:outputPanel >
+</p:layoutUnit>
+<p:layoutUnit position="west" size="200" header="меню" collapsible="true" >
+<h:form>
+
+<p:growl id="messages"/> 
+ 
+<p:panelMenu style="width:100%" >
+<!-- "Ajax Menuitems" --> 
+        <p:submenu label="Справочники" icon="ui-icon-folder-open">  
+            <p:menuitem value="Клиенты" actionListener="#{sessionBean.viewCustomers}" update="messages, :content" icon="ui-icon-bookmark" />  
+            <p:menuitem value="Номенклатуры" actionListener="#{sessionBean.viewNomenclatures}" update="messages, :content" icon="ui-icon-link" />
+            <p:menuitem value="Котракты" actionListener="#{sessionBean.viewContracts}" update="messages, :content" icon="ui-icon-document-b" />         	
+        </p:submenu>  
+        <p:submenu label="Реализация" icon="ui-icon-newwin">  
+            <p:menuitem value="Вся таблица" actionListener="#{sessionBean.viewSales}" update="messages, :content" icon="ui-icon-close"/>  
+        </p:submenu>  
+        <p:separator />
+        <p:submenu label="Администрирование" icon="ui-icon-newwin">  
+            <p:menuitem value="Пользователи" actionListener="#{sessionBean.viewUsers}" update="messages, :content" icon="ui-icon-person" />  
+        </p:submenu>    
+        <p:submenu label="Ссылки" icon="ui-icon-extlink">  
+            <p:submenu label="Prime Links">  
+                <p:menuitem value="Prime" url="http://www.prime.com.tr" />  
+                <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />  
+            </p:submenu>  
+            <!-- p:menuitem value="Mobile" outcome="/mobile/index" /> -->  
+        </p:submenu>  
+    </p:panelMenu>  
+</h:form> 
+</p:layoutUnit>
+<p:layoutUnit position="center">
+<p:panel id="content">
+<ui:include  src="#{sessionBean.currentPage}" />
+</p:panel>
+</p:layoutUnit>
+</p:layout>    
+    </h:body>
+</html>
