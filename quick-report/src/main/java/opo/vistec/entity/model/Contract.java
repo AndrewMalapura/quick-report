@@ -11,7 +11,7 @@ public class Contract implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String contractaccount;
-	private String contractnumber;
+	private String contractnumber; 
 	private Date contractdate;
 	private String contractcode;
 	private String partneraccount;
@@ -19,6 +19,7 @@ public class Contract implements Serializable{
 	private String modifiedby;
 	private Date modifieddate;
 	
+
 	public String getContractaccount() {
 		return contractaccount;
 	}

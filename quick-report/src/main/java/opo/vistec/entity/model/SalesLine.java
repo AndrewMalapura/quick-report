@@ -12,9 +12,9 @@ public class SalesLine implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Sales sales; // заказ
-	private Invent item; // номенклатура
-	private Long numlines;
+	private String salesid; 
+	private Invent item; 		// номенклатура
+	private Integer numlines;		
 	private String locationitemid;
 	private Double qty;
 	private Double price;
@@ -26,11 +26,11 @@ public class SalesLine implements Serializable {
 	private BigDecimal nds;
 	private Double qty_real;
 	
-	public Sales getSales() {
-		return sales;
+	public String getSalesid() {
+		return salesid;
 	}
-	public void setSales(Sales sales) {
-		this.sales = sales;
+	public void setSalesid(String salesid) {
+		this.salesid = salesid;
 	}
 	public Invent getItem() {
 		return item;
@@ -38,10 +38,10 @@ public class SalesLine implements Serializable {
 	public void setItem(Invent item) {
 		this.item = item;
 	}
-	public Long getNumlines() {
+	public Integer getNumlines() {
 		return numlines;
 	}
-	public void setNumlines(Long numlines) {
+	public void setNumlines(Integer numlines) {
 		this.numlines = numlines;
 	}
 	public String getLocationitemid() {

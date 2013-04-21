@@ -3,6 +3,7 @@ package opo.vistec.entity.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 public class Sales implements Serializable{
 	
@@ -18,7 +19,7 @@ public class Sales implements Serializable{
 	private String currencycode;
 	private Long recid;
 	private Integer approved;
-	private String contractaccount;
+	private Contract contractaccount;
 	private BigDecimal summa;
 	private Date warrantdata;
 	private String warrantwho;
@@ -28,6 +29,7 @@ public class Sales implements Serializable{
 	private Date createdtime;
 	private Date modifiedtime;
 	private String salesman;
+	private Set<SalesLine> salesList;
 	
 	// Getters and Setters
 	public String getSalesid() {
@@ -66,10 +68,10 @@ public class Sales implements Serializable{
 	public void setApproved(Integer approved) {
 		this.approved = approved;
 	}
-	public String getContractaccount() {
+	public Contract getContractaccount() {
 		return contractaccount;
 	}
-	public void setContractaccount(String contractaccount) {
+	public void setContractaccount(Contract contractaccount) {
 		this.contractaccount = contractaccount;
 	}
 	public BigDecimal getSumma() {
@@ -125,5 +127,11 @@ public class Sales implements Serializable{
 	}
 	public void setSalesman(String salesman) {
 		this.salesman = salesman;
+	}
+	public Set<SalesLine> getSalesList() {
+		return salesList;
+	}
+	public void setSalesList(Set<SalesLine> salesList) {
+		this.salesList = salesList;
 	}
 }

@@ -4,11 +4,11 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.Contract" table="contract" >
-    	<id column="accountnun" name="accountnun" type="string" length="10" >
-    		<generator class="identity" />
+    	<id column="contractaccount" name="contractaccount" type="string" length="10" >
+    		<generator class="native" />
     	</id>
         <property column="contractnumber" name="contractnumber" type="string" length="20"/>
-        <property column="contractdate" name="contract" type="date" />
+        <property column="contractdate" name="contractdate" type="date" />
         <property column="contractcode" name="contractcode" type="string" length="10"/>
         <property column="partneraccount" name="partneraccount" type="string" length="15"/>
         <property column="currencycode" name="currencycode" type="string" length="3"/>
