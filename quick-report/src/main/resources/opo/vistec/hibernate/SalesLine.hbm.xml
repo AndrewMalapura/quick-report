@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="opo.vistec.entity.model.SalesLine" table="salesline" >
+    	<id column="recid" name="recid" type="integer" >
+    		<generator class="identity" />
+    	</id>    	
+    	<property column="salesid" name="salesid" type="string" length="20" />
+    	<many-to-one name="item" class="opo.vistec.entity.model.Invent" column="itemid" cascade="all" lazy="false"/> 	 
+    	<property column="numlines" name="numlines" type="integer" />
+    	<property column="locationitemid" name="locationitemid" type="string" length="10" />
+    	<property column="qty" name="qty" type="double" />
+    	<property column="price" name="price" type="double" />
+		<property column="cost" name="cost" type="big_decimal" />		
+		<property column="unitid" name="unitid" type="string" length="10"/>
+		<property column="cost_nds" name="cost_nds" type="big_decimal" />
+		<property column="price_nds" name="price_nds" type="double" />		
+		<property column="nds" name="nds" type="big_decimal" />
+		<property column="qty_real" name="qty_real" type="double" />
+    </class>
+</hibernate-mapping>
