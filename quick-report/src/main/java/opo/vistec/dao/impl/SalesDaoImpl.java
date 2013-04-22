@@ -1,5 +1,7 @@
 package opo.vistec.dao.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import opo.vistec.dao.SalesDAO;
@@ -12,7 +14,14 @@ public class SalesDaoImpl extends HibernateDaoSupport implements SalesDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Sales> findAllSales() {
-		return getHibernateTemplate().find("from Sales");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+		Date date=new Date();        
+		try {
+		    date = sdf.parse("01.03.2013");           
+		}catch (Exception e) {
+		    e.printStackTrace();
+		}   
+		return getHibernateTemplate().find("from Sales s where s.deliverydate > ?", date);
 	}
 
 }

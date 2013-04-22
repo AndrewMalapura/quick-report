@@ -20,9 +20,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
           <value>opo/vistec/hibernate/User.hbm.xml</value>
           <value>opo/vistec/hibernate/Customer.hbm.xml</value>
           <value>opo/vistec/hibernate/Sales.hbm.xml</value>
+          <value>opo/vistec/hibernate/SalesLine.hbm.xml</value>
           <value>opo/vistec/hibernate/Invent.hbm.xml</value>
           <value>opo/vistec/hibernate/Invoice.hbm.xml</value>
-          <value>opo/vistec/hibernate/SalesLine.hbm.xml</value>
           <value>opo/vistec/hibernate/InvoiceLine.hbm.xml</value>
           <value>opo/vistec/hibernate/Contract.hbm.xml</value>
 		</list>

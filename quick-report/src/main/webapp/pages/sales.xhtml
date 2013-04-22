@@ -9,9 +9,11 @@
 <body>
 <ui:composition>
 <h:form id="sorted-table" style="font-size: 8pt;">  
-    <p:dataTable id="salesTab" var="sales" value="#{sessionBean.salesList}" sortMode="multiple" widgetVar="saleTable"   
-            emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredSales}" 
-            rows="25" paginator="true" paginatorPosition="bottom" > 
+    <p:dataTable id="salesTab" var="sales" value="#{sessionBean.salesList}"
+     sortMode="multiple" widgetVar="saleTable"   
+     emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredSales}" 
+     rowKey="#{sales.salesid}" selection="#{salesTab.selectedSale}" selectionMode="single"
+     rows="25" paginator="true" paginatorPosition="bottom"> 
     	<f:facet name="header">  
             <p:outputPanel style="float:right; text-align:center;"> 
             	<h:graphicImage alt="search" library="images" name="magnifier.png" style="vertical-align:middle; margin:0 5px 0 0;"/>
@@ -38,10 +40,10 @@
             <h:outputText value="#{sales.deliverydate}" />  
         </p:column>
         
-        <p:column sortBy="#{sales.contractaccount}" headerText="Контракт" filterBy="#{sales.contractaccount}">  
-            <h:outputText value="#{sales.contractaccount}" />  
+        <p:column sortBy="#{sales.contractaccount.contractnumber}" headerText="№ договора" filterBy="#{sales.contractaccount.contractnumber}">  
+            <h:outputText value="#{sales.contractaccount.contractnumber}" />  
         </p:column>  
-    </p:dataTable> 
+    </p:dataTable>
 </h:form>
 </ui:composition>
 </body>
