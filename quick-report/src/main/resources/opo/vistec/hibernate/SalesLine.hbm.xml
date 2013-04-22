@@ -5,10 +5,11 @@
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.SalesLine" table="salesline" >
     	<id column="recid" name="recid" type="integer" >
-    		<generator class="identity" />
-    	</id>    	
-    	<property column="salesid" name="salesid" type="string" length="20" />
-    	<many-to-one name="item" class="opo.vistec.entity.model.Invent" column="itemid" cascade="all" lazy="false"/> 	 
+    		<generator class="native" />
+    	</id>  
+    	<!-- property column="salesid" name="salesid" type="string" length="20" /-->
+    	<many-to-one name="itemid" class="opo.vistec.entity.model.Invent" column="itemid"  insert="false" update="false" />
+    	<many-to-one name="sales" class="opo.vistec.entity.model.Sales" column="salesid" fetch="select"/>
     	<property column="numlines" name="numlines" type="integer" />
     	<property column="locationitemid" name="locationitemid" type="string" length="10" />
     	<property column="qty" name="qty" type="double" />

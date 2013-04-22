@@ -29,7 +29,7 @@ public class Sales implements Serializable{
 	private Date createdtime;
 	private Date modifiedtime;
 	private String salesman;
-	private Set<SalesLine> salesList;
+	private Set<SalesLine> salesList ;
 	
 	// Getters and Setters
 	public String getSalesid() {

@@ -30,6 +30,7 @@ public class SessionBean implements Serializable {
 	CustomerBo customerBO;
 	SalesBo salesBO;
 	InventBo inventBO;
+	Sales selectedSale;
 	
 
 	/**
@@ -111,7 +112,10 @@ public class SessionBean implements Serializable {
 		custList = customerBO.findAllCustomer();
 	}	
 	public void loadSales(){
+
+		System.out.println(" -- start ---");
 		salesList = salesBO.findAllSales();
+		System.out.println(" -- end ---");
 	}
 	public void loadInvent(){
 		inventList = inventBO.findAllInvents();
@@ -190,4 +194,12 @@ public class SessionBean implements Serializable {
 		this.currentPage = currentPage;
 	}
 	// ---------------  End getters, setters 
+
+	public Sales getSelectedSale() {
+		return selectedSale;
+	}
+
+	public void setSelectedSale(Sales selectedSale) {
+		this.selectedSale = selectedSale;
+	}
 }

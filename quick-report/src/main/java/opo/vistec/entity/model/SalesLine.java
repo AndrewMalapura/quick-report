@@ -12,8 +12,8 @@ public class SalesLine implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String salesid; 
-	private Invent item; 		// номенклатура
+	private Sales sales; 
+	private Invent itemid; 		// номенклатура
 	private Integer numlines;		
 	private String locationitemid;
 	private Double qty;
@@ -26,17 +26,17 @@ public class SalesLine implements Serializable {
 	private BigDecimal nds;
 	private Double qty_real;
 	
-	public String getSalesid() {
-		return salesid;
+	public Sales getSales() {
+		return sales;
 	}
-	public void setSalesid(String salesid) {
-		this.salesid = salesid;
+	public void setSales(Sales sales) {
+		this.sales = sales;
 	}
-	public Invent getItem() {
-		return item;
+	public Invent getItemid() {
+		return itemid;
 	}
-	public void setItem(Invent item) {
-		this.item = item;
+	public void setItemid(Invent itemid) {
+		this.itemid = itemid;
 	}
 	public Integer getNumlines() {
 		return numlines;
