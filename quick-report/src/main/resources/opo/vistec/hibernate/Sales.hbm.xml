@@ -12,7 +12,7 @@
         <property column="currencycode" name="currencycode" type="string" length="3" />
 		<property column="recid" name="recid" type="long" />
 		<property column="approved" name="approved" type="integer" />
-		<many-to-one  name="contractaccount" class="opo.vistec.entity.model.Contract" column="contractaccount" fetch="join"/>
+		<many-to-one  name="contractaccount" class="opo.vistec.entity.model.Contract" column="contractaccount" not-found="ignore"/> 
 		<property column="summa" name="summa" type="big_decimal" />
 		<property column="warrantdata" name="warrantdata" type="date" />
 		<property column="warrantwho" name="warrantwho" type="string" length="20" />
@@ -24,7 +24,7 @@
 		<property column="salesman" name="salesman" type="string" length="10" />
 		<set name="salesList" table="salesline" cascade="all" inverse="true" lazy="true" fetch="select">
 			<key column="salesid" />
-			<one-to-many class="opo.vistec.entity.model.SalesLine" />
+			<one-to-many  class="opo.vistec.entity.model.SalesLine" />
 		</set>
     </class>
 </hibernate-mapping>
