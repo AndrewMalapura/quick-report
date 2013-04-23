@@ -109,8 +109,6 @@ public class Invent implements Serializable{
 	}
 	public void setNds(Integer nds) {
 		this.nds = nds;
-	}
-	
-	
+	}	
 
 }

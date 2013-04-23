@@ -3,6 +3,7 @@ package opo.vistec.entity.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Sales implements Serializable{
@@ -29,7 +30,8 @@ public class Sales implements Serializable{
 	private Date createdtime;
 	private Date modifiedtime;
 	private String salesman;
-	private Set<SalesLine> salesList ;
+	//private Set<SalesLine> salesList ;
+	private Set<Invent> salesList = new HashSet<Invent>();
 	
 	// Getters and Setters
 	public String getSalesid() {
@@ -128,10 +130,10 @@ public class Sales implements Serializable{
 	public void setSalesman(String salesman) {
 		this.salesman = salesman;
 	}
-	public Set<SalesLine> getSalesList() {
+	public Set<Invent> getSalesList() {
 		return salesList;
 	}
-	public void setSalesList(Set<SalesLine> salesList) {
+	public void setSalesList(Set<Invent> salesList) {
 		this.salesList = salesList;
 	}
 }

@@ -17,19 +17,20 @@
 </p:outputPanel >
 </p:layoutUnit>
 <p:layoutUnit position="west" size="200" header="меню" collapsible="true" >
-<h:form>
+<h:form id="menu">
 
 <p:growl id="messages"/> 
  
 <p:panelMenu style="width:100%" >
 <!-- "Ajax Menuitems" --> 
         <p:submenu label="Справочники" icon="ui-icon-folder-open">  
-            <p:menuitem value="Клиенты" actionListener="#{sessionBean.viewCustomers}" update="messages, :content" icon="ui-icon-bookmark" />  
-            <p:menuitem value="Номенклатуры" actionListener="#{sessionBean.viewNomenclatures}" update="messages, :content" icon="ui-icon-link" />
-            <p:menuitem value="Котракты" actionListener="#{sessionBean.viewContracts}" update="messages, :content" icon="ui-icon-document-b" />         	
+            <p:menuitem id="allcust" value="Клиенты" actionListener="#{sessionBean.viewCustomers}" update="messages, :content" icon="ui-icon-bookmark" />  
+            <p:menuitem id="allinvent" value="Номенклатуры" actionListener="#{sessionBean.viewNomenclatures}" update="messages, :content" icon="ui-icon-link" />
+            <p:menuitem id="allcontract" value="Котракты" actionListener="#{sessionBean.viewContracts}" update="messages, :content" icon="ui-icon-document-b" />         	
         </p:submenu>  
         <p:submenu label="Реализация" icon="ui-icon-newwin">  
-            <p:menuitem value="Вся таблица" actionListener="#{sessionBean.viewSales}" update="messages, :content" icon="ui-icon-close"/>  
+            <p:menuitem id="allsale" value="Вся таблица" actionListener="#{sessionBean.viewSales}"
+             update="messages, :content" icon="ui-icon-close" />  
         </p:submenu>  
         <p:separator />
         <p:submenu label="Администрирование" icon="ui-icon-newwin">  
@@ -45,11 +46,18 @@
     </p:panelMenu>  
 </h:form> 
 </p:layoutUnit>
-<p:layoutUnit position="center">
+<p:layoutUnit   id="centerlayot" position="center">
 <p:panel id="content">
-<ui:include  src="#{sessionBean.currentPage}" />
-</p:panel>
+<ui:include src="#{sessionBean.currentPage}" />
+</p:panel> 
 </p:layoutUnit>
-</p:layout>    
+</p:layout> 
+<p:blockUI block=":centerlayot" trigger=":menu:allsale,:menu:allinvent,:menu:allcust,:menu:allcontract" widgetVar="blockUIWidget">
+    <h:panelGrid columns="2">  
+        <h:graphicImage library="images" name="ajax-loader.GIF"  
+                        style="margin-right: 12px; vertical-align: middle;"/>  
+        <h:outputText value="Загрузка..." style="white-space: nowrap;"/>  
+    </h:panelGrid>    
+</p:blockUI>   
     </h:body>
 </html>

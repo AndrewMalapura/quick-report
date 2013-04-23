@@ -22,9 +22,9 @@
 		<property column="createdtime" name="createdtime" type="date" />
 		<property column="modifiedtime" name="modifiedtime" type="date" />
 		<property column="salesman" name="salesman" type="string" length="10" />
-		<set name="salesList" table="salesline" cascade="all" inverse="true" lazy="true" fetch="select">
+		<set name="salesList" table="salesline" inverse="true" fetch="select">
 			<key column="salesid" />
-			<one-to-many  class="opo.vistec.entity.model.SalesLine" />
+			<one-to-many class="opo.vistec.entity.model.SalesLine"/>
 		</set>
     </class>
 </hibernate-mapping>

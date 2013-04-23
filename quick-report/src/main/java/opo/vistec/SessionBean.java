@@ -60,7 +60,6 @@ public class SessionBean implements Serializable {
 		  if(usr.equals(user)){
 		loadCustomers();
 		this.user = usr;
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", user.getUserName());
 		return "success";
 		  }
 		}
@@ -112,10 +111,7 @@ public class SessionBean implements Serializable {
 		custList = customerBO.findAllCustomer();
 	}	
 	public void loadSales(){
-
-		System.out.println(" -- start ---");
 		salesList = salesBO.findAllSales();
-		System.out.println(" -- end ---");
 	}
 	public void loadInvent(){
 		inventList = inventBO.findAllInvents();

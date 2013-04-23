@@ -19,6 +19,6 @@
         <property column="locationunitid" name="locationunitid" type="string" length="10" />
         <property column="salesunitid" name="salesunitid" type="string" length="10" />
         <property column="saleslocationid" name="saleslocationid" type="string" length="10" />
-        <property column="nds" name="nds" type="integer"/>       
+        <property column="nds" name="nds" type="integer"/>     
     </class>
 </hibernate-mapping>

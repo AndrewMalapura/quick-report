@@ -9,10 +9,14 @@
 <body>
 <ui:composition>
 <h:form id="sorted-table" style="font-size: 8pt;">  
+	<p:contextMenu for="salesTab">  
+        <p:menuitem value="Показать" update="display" icon="ui-icon-search" oncomplete="salesDialog.show()"/>  
+        <p:menuitem value="Обновить" update="salesTab" icon="ui-icon-close" actionListener="#{sessionBean.loadSales}"/>  
+    </p:contextMenu>  
     <p:dataTable id="salesTab" var="sales" value="#{sessionBean.salesList}"
      sortMode="multiple" widgetVar="saleTable"   
      emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredSales}" 
-     rowKey="#{sales.salesid}" selection="#{salesTab.selectedSale}" selectionMode="single"
+     rowKey="#{sales.salesid}" selection="#{sessionBean.selectedSale}" selectionMode="single"
      rows="25" paginator="true" paginatorPosition="bottom"> 
     	<f:facet name="header">  
             <p:outputPanel style="float:right; text-align:center;"> 
@@ -42,8 +46,31 @@
         
         <p:column sortBy="#{sales.contractaccount.contractnumber}" headerText="№ договора" filterBy="#{sales.contractaccount.contractnumber}">  
             <h:outputText value="#{sales.contractaccount.contractnumber}" />  
-        </p:column>  
+        </p:column> 
     </p:dataTable>
+    
+    <p:blockUI block="salesTab" trigger="salesTab">  
+        <h:graphicImage library="images" name="ajax-loader.GIF"/>  
+    </p:blockUI> 
+    
+    <p:dialog header="Детали заказа" widgetVar="salesDialog" resizable="false"  
+              width="200" showEffect="clip" hideEffect="fold" id="dialog">  
+  
+        <h:panelGrid id="display" columns="2" cellpadding="4">  
+  
+            <h:outputText value="Номер заказа: " />  
+            <h:outputText value="#{sessionBean.selectedSale.salesid}" style="font-weight:bold"/>  
+  
+            <h:outputText value="Сумма заказа: " />  
+            <h:outputText value="#{sessionBean.selectedSale.summa}" style="font-weight:bold"/>  
+  
+            <h:outputText value="Валюта: " />  
+            <h:outputText value="#{sessionBean.selectedSale.currencycode}" style="font-weight:bold"/>  
+  
+            <h:outputText value="Дата: " />  
+            <h:outputText value="#{sessionBean.selectedSale.deliverydate}" style="font-weight:bold"/>  
+        </h:panelGrid>  
+    </p:dialog>  
 </h:form>
 </ui:composition>
 </body>
