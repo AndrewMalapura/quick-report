@@ -5,14 +5,14 @@
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.Sales" table="salestable" >
     	<id column="salesid" name="salesid" type="string" length="20" >
-    		<generator class="native" />
+    		<generator class="identity" />
     	</id>     
-        <many-to-one name="custaccount" class="opo.vistec.entity.model.Customer" column="custaccount" cascade="all" lazy="false"/>
+        <many-to-one name="custaccount" class="opo.vistec.entity.model.Customer" column="custaccount" lazy="false"/>
         <property column="deliverydate" name="deliverydate" type="date" />
         <property column="currencycode" name="currencycode" type="string" length="3" />
 		<property column="recid" name="recid" type="long" />
 		<property column="approved" name="approved" type="integer" />
-		<many-to-one  name="contractaccount" class="opo.vistec.entity.model.Contract" column="contractaccount" not-found="ignore"/> 
+		<many-to-one  name="contractaccount" class="opo.vistec.entity.model.Contract" column="contractaccount" cascade="all" not-found="ignore"/> 
 		<property column="summa" name="summa" type="big_decimal" />
 		<property column="warrantdata" name="warrantdata" type="date" />
 		<property column="warrantwho" name="warrantwho" type="string" length="20" />
@@ -22,9 +22,9 @@
 		<property column="createdtime" name="createdtime" type="date" />
 		<property column="modifiedtime" name="modifiedtime" type="date" />
 		<property column="salesman" name="salesman" type="string" length="10" />
-		<set name="salesList" table="salesline" inverse="true" fetch="select">
+		<bag name="salesList" table="salesline" cascade="all" lazy="false">
 			<key column="salesid" />
-			<one-to-many class="opo.vistec.entity.model.SalesLine"/>
-		</set>
+			<one-to-many class="opo.vistec.entity.model.SalesLine" />
+		</bag>
     </class>
 </hibernate-mapping>

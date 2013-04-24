@@ -19,7 +19,7 @@ public class SalesLine implements Serializable {
 	private Double qty;
 	private Double price;
 	private BigDecimal cost;
-	private Long recid;
+	private Integer recid;
 	private String unitid;
 	private BigDecimal cost_nds;
 	private Double price_nds;
@@ -68,10 +68,10 @@ public class SalesLine implements Serializable {
 	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
-	public Long getRecid() {
+	public Integer getRecid() {
 		return recid;
 	}
-	public void setRecid(Long recid) {
+	public void setRecid(Integer recid) {
 		this.recid = recid;
 	}
 	public String getUnitid() {

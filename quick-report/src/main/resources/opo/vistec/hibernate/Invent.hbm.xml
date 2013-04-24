@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.Invent" table="inventtable" >
     	<id column="itemid" name="itemid" type="string" length="20" >
-    		<generator class="native" />
+    		<generator class="identity" />
     	</id>
         <property column="itemgroupid" name="itemgroupid" type="string" length="11"/>
         <property column="itemname" name="itemname" type="string" length="150"/>

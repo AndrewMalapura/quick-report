@@ -10,7 +10,7 @@
 <ui:composition>
 <h:form id="sorted-table" style="font-size: 8pt;">  
 	<p:contextMenu for="salesTab">  
-        <p:menuitem value="Показать" update="display" icon="ui-icon-search" oncomplete="salesDialog.show()"/>  
+        <p:menuitem value="Показать" update="dialog" icon="ui-icon-search" oncomplete="salesDialog.show()"/>  
         <p:menuitem value="Обновить" update="salesTab" icon="ui-icon-close" actionListener="#{sessionBean.loadSales}"/>  
     </p:contextMenu>  
     <p:dataTable id="salesTab" var="sales" value="#{sessionBean.salesList}"
@@ -53,23 +53,40 @@
         <h:graphicImage library="images" name="table-loader.GIF"/>  
     </p:blockUI> 
     
-    <p:dialog header="Детали заказа" widgetVar="salesDialog" resizable="false"  
-              width="200" showEffect="clip" hideEffect="fold" id="dialog">  
+    <p:dialog header="Детали заказа #{sessionBean.selectedSale.salesid}" widgetVar="salesDialog" resizable="true"  
+              width="600" height="500" showEffect="clip" hideEffect="fold" id="dialog">  
   
-        <h:panelGrid id="display" columns="2" cellpadding="4">  
-  
-            <h:outputText value="Номер заказа: " />  
-            <h:outputText value="#{sessionBean.selectedSale.salesid}" style="font-weight:bold"/>  
-  
+        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin: 0;">  
+  			
+  			<h:outputText value="Дата заказа: " />  
+            <h:outputText value="#{sessionBean.selectedSale.deliverydate}" style="font-weight:bold"/>
+  			
+  			<h:outputText value="Клиент: " />  
+            <h:outputText value="#{sessionBean.selectedSale.custaccount.name}" style="font-weight:bold"/>
+  			
+  			<h:outputText value="ОКПО клиента: " />  
+            <h:outputText value="#{sessionBean.selectedSale.custaccount.codeokpo_ru}" style="font-weight:bold"/> 			
+  			
             <h:outputText value="Сумма заказа: " />  
             <h:outputText value="#{sessionBean.selectedSale.summa}" style="font-weight:bold"/>  
   
             <h:outputText value="Валюта: " />  
-            <h:outputText value="#{sessionBean.selectedSale.currencycode}" style="font-weight:bold"/>  
-  
-            <h:outputText value="Дата: " />  
-            <h:outputText value="#{sessionBean.selectedSale.deliverydate}" style="font-weight:bold"/>  
-        </h:panelGrid>  
+            <h:outputText value="#{sessionBean.selectedSale.currencycode}" style="font-weight:bold"/>
+            </h:panelGrid>   
+  			<p:panel id="lines">
+  		<table border="1" width="100%">
+		<tr><th>Номенклатура</th><th>Кол-во</th><th>Ед. изм</th><th>Цена</th><th>Сумма</th></tr>  	
+  	<ui:repeat value="#{sessionBean.selectedSale.salesList}" var="str">
+        <tr>
+          <td><h:outputText value="#{str.itemid.itemname}" style="font-weight:bolder"/></td>
+          <td><h:outputText value="#{str.qty}" style="font-weight:normal"/></td>
+          <td><h:outputText value="#{str.unitid}" style="font-weight:normal"/></td>
+          <td><h:outputText value="#{str.price}" style="font-weight:normal"/></td>
+          <td><h:outputText value="#{str.cost}" style="font-weight:normal"/></td>
+        </tr>
+    </ui:repeat>
+      </table>
+      </p:panel>
     </p:dialog>  
 </h:form>
 </ui:composition>
