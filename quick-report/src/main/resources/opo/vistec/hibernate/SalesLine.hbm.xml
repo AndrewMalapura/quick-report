@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.SalesLine" table="salesline" >
     	<id column="recid" name="recid" type="integer" >
-    		<generator class="identity" />
+    		<generator class="native" />
     	</id>
     	<many-to-one name="itemid" class="opo.vistec.entity.model.Invent" column="itemid" cascade="all" lazy="false" />
     	<many-to-one name="sales" class="opo.vistec.entity.model.Sales" column="salesid" />
