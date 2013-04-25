@@ -6,8 +6,8 @@ import java.util.Date;
 public class Invent implements Serializable{
 
 	/**
-	 *    Номенклатуры
-	 *    описаны не все поля
+	 *    справочник номенклатур
+	 *    описаны не все поля из БД
 	 */
 	private static final long serialVersionUID = 1L;
 	
