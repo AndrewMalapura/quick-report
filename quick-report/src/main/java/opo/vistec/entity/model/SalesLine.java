@@ -26,6 +26,7 @@ public class SalesLine implements Serializable {
 	private BigDecimal nds;
 	private Double qty_real;
 	
+
 	public Sales getSales() {
 		return sales;
 	}

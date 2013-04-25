@@ -15,8 +15,9 @@ public class Invoice implements Serializable {
 
 	private static final long serialVersionUID = -4840424253401955433L;
 	
+	private OrderId order;
 	private String invoiceid;
-	private Sales sales;
+	private String salesid;
 	private Date invoicedate;
 	private String warrant;
 	private Date warrantdata;
@@ -32,12 +33,21 @@ public class Invoice implements Serializable {
 	public void setInvoiceid(String invoiceid) {
 		this.invoiceid = invoiceid;
 	}
-	public Sales getSales() {
-		return sales;
+	public String getSalesid() {
+		return salesid;
 	}
-	public void setSales(Sales sales) {
-		this.sales = sales;
+	public void setSalesid(String salesid) {
+		this.salesid = salesid;
 	}
+	
+	/*
+	
+	public OrderId getOrderid() {
+		return orderid;
+	}
+	public void setOrderid(OrderId orderid) {
+		this.orderid = orderid;
+	}*/
 	public Date getInvoicedate() {
 		return invoicedate;
 	}
@@ -80,11 +90,18 @@ public class Invoice implements Serializable {
 	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
+	
 	public List<InvoiceLine> getInvoiceList() {
 		return invoiceList;
 	}
 	public void setInvoiceList(List<InvoiceLine> invoiceList) {
 		this.invoiceList = invoiceList;
+	}
+	public OrderId getOrder() {
+		return order;
+	}
+	public void setOrder(OrderId order) {
+		this.order = order;
 	}
 
 }

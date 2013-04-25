@@ -11,6 +11,7 @@ public class InvoiceLine implements Serializable {
 	private static final long serialVersionUID = 6806008116767082342L;
 	private String salesid;
 	private String invoiceid;
+	private Invoice invoice;
 	private Invent invent;
 	private String locationinvent;
 	private Double qty;
@@ -24,6 +25,12 @@ public class InvoiceLine implements Serializable {
 	}
 	public void setSalesid(String salesid) {
 		this.salesid = salesid;
+	}
+	public Invoice getInvoice() {
+		return invoice;
+	}
+	public void setInvoice(Invoice invoice) {
+		this.invoice = invoice;
 	}
 	public String getInvoiceid() {
 		return invoiceid;
