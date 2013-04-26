@@ -10,14 +10,13 @@ public class InvoiceLineId implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String salesid;
 	private String invoiceid;
-	private Invent invent;
+	private Integer recid;
 	
 	public InvoiceLineId(){}
 	
 	public InvoiceLineId(String salesid, String invoiceid, Invent invent){
 		this.salesid = salesid;
 		this.invoiceid = invoiceid;
-		this.invent = invent;
 	}
 	
 	public String getSalesid() {
@@ -36,21 +35,22 @@ public class InvoiceLineId implements Serializable {
 		this.invoiceid = invoiceid;
 	}
 
-	public Invent getInvent() {
-		return invent;
+	
+	public Integer getRecid() {
+		return recid;
 	}
 
-	public void setInvent(Invent invent) {
-		this.invent = invent;
+	public void setRecid(Integer recid) {
+		this.recid = recid;
 	}
-	
+
 	@Override
 	public int hashCode() {
 	   final int prime = 31;
 	   int result = 1;
 	   result = prime * result + ((salesid == null) ? 0 : salesid.hashCode());
 	   result = prime * result + ((invoiceid == null) ? 0 : invoiceid.hashCode());
-	   result = prime * result + ((invent == null) ? 0 : invent.hashCode());
+	   result = prime * result + ((recid == null) ? 0 :recid.hashCode());
 	   return result;
 	}
 	@Override
@@ -72,10 +72,10 @@ public class InvoiceLineId implements Serializable {
 	         return false;
 	      } else if (!invoiceid.equals(other.invoiceid))
 	         return false;
-	   if (invent == null) {
-		      if (other.invent != null)
+	   if (recid == null) {
+		      if (other.recid != null)
 		         return false;
-		      } else if (!invoiceid.equals(other.invoiceid))
+		      } else if (!recid.equals(other.recid))
 		         return false;
 	   return true;
 	  }

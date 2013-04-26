@@ -15,7 +15,7 @@ public class Invoice implements Serializable {
 
 	private static final long serialVersionUID = -4840424253401955433L;
 	
-	private OrderId order;
+	private OrderId orderPK;
 	//private String invoiceid;
 	//private String salesid;
 	private Date invoicedate;
@@ -97,11 +97,11 @@ public class Invoice implements Serializable {
 	public void setInvoiceList(List<InvoiceLine> invoiceList) {
 		this.invoiceList = invoiceList;
 	}
-	public OrderId getOrder() {
-		return order;
+	public OrderId getOrderPK() {
+		return orderPK;
 	}
-	public void setOrder(OrderId order) {
-		this.order = order;
+	public void setOrderPK(OrderId orderPK) {
+		this.orderPK = orderPK;
 	}
 
 }

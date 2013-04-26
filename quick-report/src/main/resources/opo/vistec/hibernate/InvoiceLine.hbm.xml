@@ -4,16 +4,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.InvoiceLine" table="invoicelines" >
-    	<id column="recid" name="recid" type="integer" >
-    		<generator class="native" />
-    	</id>
-    	<property column="salesid" name="salesid" type="string" length="20" />
-        <property column="invoiceid" name="invoiceid" type="string" length="20" /> 
+      <composite-id name="id" class="opo.vistec.entity.model.InvoiceLineId" >
+         <key-property name="invoiceid" column="invoiceid" type="string"></key-property>
+         <key-property name="salesid" column="salesid" type="string"></key-property>
+         <key-property name="recid" column="recid" type="integer"></key-property>  
+      </composite-id> 
+    	<!-- property column="invoiceid" name="invoiceid" type="string" length="20" />
+    	<property column="salesid" name="salesid" type="string" length="20" /> --> 
         <many-to-one name="invent" class="opo.vistec.entity.model.Invent" column="iventid" />	 
-    	<many-to-one name="order" class="opo.vistec.entity.model.Invoice"  insert="false" update="false"> 
-    		<column name="invoiceid"/>
-    		<column name="salesid"/>    		
-    	</many-to-one>
+    	<many-to-one name="order" class="opo.vistec.entity.model.Invoice"  insert="false" update="false">
+    	 	<column name="invoiceid"/>  
+    	 	<column name="salesid"/> 
+		</many-to-one> 		
     	<property column="locationinvent" name="locationinvent" type="string" length="10" />
     	<property column="qty" name="qty" type="double" />
     	<property column="price" name="price" type="double" />

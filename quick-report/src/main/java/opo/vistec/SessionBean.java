@@ -127,8 +127,8 @@ public class SessionBean implements Serializable {
 		System.out.println("size="+ordersList.size());
 		int i = 0;
 		for (Invoice order : ordersList) {
-			System.out.println(" invoice :"+order.getOrder().getInvoiceid()+
-		" salesid :"+order.getOrder().getSalesid()+"  date :"+order.getInvoicedate());	
+			System.out.println(" invoice :"+order.getOrderPK().getInvoiceid()+
+		" salesid :"+order.getOrderPK().getSalesid()+"  size list :"+order.getInvoiceList().size());	
 			if(i>10) break;
 			i++;
 		}
