@@ -11,7 +11,7 @@ public class InvoiceLine implements Serializable {
 	private static final long serialVersionUID = 6806008116767082342L;
 	private String salesid;
 	private String invoiceid;
-	private Invoice orders;
+	private Invoice order;
 	private Invent invent;
 	private String locationinvent;
 	private Double qty;
@@ -26,17 +26,17 @@ public class InvoiceLine implements Serializable {
 	public void setSalesid(String salesid) {
 		this.salesid = salesid;
 	}
-	public Invoice getOrders() {
-		return orders;
-	}
-	public void setOrders(Invoice orders) {
-		this.orders =orders;
-	}
 	public String getInvoiceid() {
 		return invoiceid;
 	}
 	public void setInvoiceid(String invoiceid) {
 		this.invoiceid = invoiceid;
+	}
+	public Invoice getOrder() {
+		return order;
+	}
+	public void setOrder(Invoice order) {
+		this.order = order;
 	}
 	public Invent getInvent() {
 		return invent;
@@ -80,5 +80,11 @@ public class InvoiceLine implements Serializable {
 	public void setRecid(Integer recid) {
 		this.recid = recid;
 	}
+	/*public OrderId getId() {
+		return id;
+	}
+	public void setId(OrderId id) {
+		this.id = id;
+	}*/
 	
 }

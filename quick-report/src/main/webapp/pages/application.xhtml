@@ -30,6 +30,8 @@
         </p:submenu>  
         <p:submenu label="Реализация" icon="ui-icon-newwin">  
             <p:menuitem id="allsale" value="Вся таблица" actionListener="#{sessionBean.viewSales}"
+             update="messages, :content" icon="ui-icon-close" />
+             <p:menuitem id="orders" value="Ордера налоговой" actionListener="#{sessionBean.loadOrders}"
              update="messages, :content" icon="ui-icon-close" />  
         </p:submenu>  
         <p:separator />

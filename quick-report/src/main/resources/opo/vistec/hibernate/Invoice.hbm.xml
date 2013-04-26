@@ -8,20 +8,19 @@
          <key-property name="invoiceid" column="invoiceid" type="string"></key-property>
          <key-property name="salesid" column="salesid" type="string"></key-property>  
       </composite-id>    
-        <property column="invoicedate" name="invoicedate" type="date" />
+        <property column="invoicedata" name="invoicedate" type="date" />
 		<property column="warrant" name="warrant" type="string" length="10" />
 		<property column="warrantdata" name="warrantdata" type="date" />
 		<property column="warrantwho" name="warrantwho" type="string" length="20" />	
 		<property column="car" name="car" type="string" length="20" />
 		<property column="carnumber" name="carnumber" type="string" length="10" />
 		<property column="cost" name="cost" type="big_decimal" />
-        <bag name="invoiceList" table="invoicelines" cascade="all" lazy="false">
+       <!-- <bag name="invoiceList" table="invoicelines" inverse="true" lazy="false">
 			<key>
+				<column name="invoiceid"/>
 				<column name="salesid"/>	
-    			<column name="invoiceid"/>
     		</key>		
 			<one-to-many class="opo.vistec.entity.model.InvoiceLine" />
-		</bag> 
-		
+		</bag> -->		
     </class>
 </hibernate-mapping>

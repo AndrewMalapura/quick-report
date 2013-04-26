@@ -46,6 +46,10 @@
 			<property-name>inventBO</property-name>
 			<value>#{inventBO}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>invoiceBO</property-name>
+			<value>#{invoiceBO}</value>
+		</managed-property>
 	</managed-bean>
  
 </faces-config>

@@ -30,6 +30,8 @@ public class SessionBean implements Serializable {
 	CustomerBo customerBO;
 	SalesBo salesBO;
 	InventBo inventBO;
+	InvoiceBo invoiceBO;
+	
 	Sales selectedSale;
 	
 
@@ -45,6 +47,9 @@ public class SessionBean implements Serializable {
 	// Коллекции номенклатур
 	public List<Invent> inventList;
 	public List<Invent> filteredInvent;
+	// Коллекции номенклатур
+	public List<Invoice> ordersList;
+	//public List<Invent> filteredInvent;
 	// Текущая страница(контент) 
 	private String currentPage = "/pages/customers.xhtml";
 	
@@ -116,6 +121,18 @@ public class SessionBean implements Serializable {
 	public void loadInvent(){
 		inventList = inventBO.findAllInvents();
 	}
+	public void loadOrders(){	
+		//OrderId id = new OrderId("868/08", "1013"); 
+		ordersList = invoiceBO.findAllOrders();
+		System.out.println("size="+ordersList.size());
+		int i = 0;
+		for (Invoice order : ordersList) {
+			System.out.println(" invoice :"+order.getOrder().getInvoiceid()+
+		" salesid :"+order.getOrder().getSalesid()+"  date :"+order.getInvoicedate());	
+			if(i>10) break;
+			i++;
+		}
+	}
 //  ----------  getters and setters ------------------
 	public UserBO getUserBO() {
 		return userBO;
@@ -177,6 +194,22 @@ public class SessionBean implements Serializable {
 	public void setInventList(List<Invent> inventList) {
 		this.inventList = inventList;
 	}
+	public InvoiceBo getInvoiceBO() {
+		return invoiceBO;
+	}
+
+	public void setInvoiceBO(InvoiceBo invoiceBO) {
+		this.invoiceBO = invoiceBO;
+	}
+
+	public List<Invoice> getOrdersList() {
+		return ordersList;
+	}
+
+	public void setOrdersList(List<Invoice> ordersList) {
+		this.ordersList = ordersList;
+	}
+
 	public List<Invent> getFilteredInvent() {
 		return filteredInvent;
 	}
@@ -189,7 +222,6 @@ public class SessionBean implements Serializable {
 	public void setCurrentPage(String currentPage) {
 		this.currentPage = currentPage;
 	}
-	// ---------------  End getters, setters 
 
 	public Sales getSelectedSale() {
 		return selectedSale;
@@ -198,4 +230,5 @@ public class SessionBean implements Serializable {
 	public void setSelectedSale(Sales selectedSale) {
 		this.selectedSale = selectedSale;
 	}
+	// ---------------  End getters, setters 
 }

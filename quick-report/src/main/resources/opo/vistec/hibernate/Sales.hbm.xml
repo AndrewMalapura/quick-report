@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="opo.vistec.entity.model.Sales" table="salestable" >
     	<id column="salesid" name="salesid" type="string" length="20" >
-    		<generator class="identity" />
+    		<generator class="native" />
     	</id>     
         <many-to-one name="custaccount" class="opo.vistec.entity.model.Customer" column="custaccount" lazy="false"/>
         <property column="deliverydate" name="deliverydate" type="date" />
