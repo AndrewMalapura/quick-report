@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+<ui:composition>
+<h:form id="chit-form" style="font-size: 8pt;"> 
+
+<p:growl id="messages" showDetail="true"/>  
+ 
+<p:panelGrid columns="2">  
+    <f:facet name="header">  
+       Счет-фактура
+    </f:facet>  
+  
+    <h:outputLabel for="customer" value="Покупатель: *" />  
+    <p:inputText id="customer" value="" label="Customer" />  
+  
+    <h:outputLabel for="contract" value="Контракт: *" />  
+    <p:inputText id="contract" value="" required="true" label="Contract"/>
+    
+    <p:dataTable var="car" value="#{tableBean.carsSmall}" id="produce" editable="true">  
+  
+        <f:facet name="header">  
+           Строки заказа
+        </f:facet>  
+  
+        <p:ajax event="rowEdit" listener="#{tableBean.onEdit}" update=":chit-form:messages" />  
+        <p:ajax event="rowEditCancel" listener="#{tableBean.onCancel}" update=":chit-form:messages" />  
+  
+        <p:column headerText="Наименование" style="width:30%">  
+            <p:cellEditor>  
+                <f:facet name="output">  
+                    <h:outputText value="#{car.model}" />  
+                </f:facet>  
+                <f:facet name="input">  
+                    <p:inputText value="#{car.model}" style="width:100%"/>  
+                </f:facet>  
+            </p:cellEditor>  
+        </p:column>  
+  
+        <p:column headerText="Ед. измер." style="width:20%">  
+            <p:cellEditor>  
+                <f:facet name="output">  
+                    <h:outputText value="#{car.year}" />  
+                </f:facet>  
+                <f:facet name="input">  
+                    <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                </f:facet>  
+            </p:cellEditor>  
+        </p:column>  
+  
+        <p:column headerText="Количество" style="width:24%">  
+            <p:cellEditor>  
+                <f:facet name="output">  
+                    <h:outputText value="#{car.manufacturer}" />  
+                </f:facet>  
+                <f:facet name="input">  
+                    <h:selectOneMenu value="#{car.manufacturer}" >  
+                        <f:selectItems value="#{tableBean.manufacturers}"  
+                            var="man"   
+                            itemLabel="#{man}"  
+                            itemValue="#{man}" />  
+                    </h:selectOneMenu>  
+                </f:facet>  
+            </p:cellEditor>  
+        </p:column>  
+  
+        <p:column headerText="Color" style="width:20%">  
+            <p:cellEditor>  
+                <f:facet name="output">  
+                    <h:outputText value="#{car.color}" />  
+                </f:facet>  
+                <f:facet name="input">  
+                    <h:selectOneMenu value="#{car.color}" >  
+                        <f:selectItems value="#{tableBean.colors}"  
+                            var="color"   
+                            itemLabel="#{color}"  
+                            itemValue="#{color}" />  
+                    </h:selectOneMenu>  
+                </f:facet>  
+            </p:cellEditor>  
+        </p:column>  
+  
+        <p:column style="width:6%">  
+            <p:rowEditor />  
+        </p:column>  
+  
+    </p:dataTable>    
+  
+    <f:facet name="footer">  
+        <p:commandButton type="button" value="Сохранить" icon="ui-icon-check" style="margin:0"/>  
+    </f:facet>  
+</p:panelGrid>  
+</h:form>
+</ui:composition>
+</body>
+</html>
