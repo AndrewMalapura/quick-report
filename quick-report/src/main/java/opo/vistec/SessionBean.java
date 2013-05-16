@@ -2,6 +2,7 @@ package opo.vistec;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -21,10 +22,10 @@ public class SessionBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// Пользователь для которого открыта сессия
-	User user  = new User();;
+	User user  = new User();
 	/**
 	 *   Объекты бизнес-логики
-	 *   сущности ORM  
+	 *      сущности ORM  
 	 */
 	UserBO userBO;             
 	CustomerBo customerBO;
@@ -47,29 +48,33 @@ public class SessionBean implements Serializable {
 	// Коллекции номенклатур
 	public List<Invent> inventList;
 	public List<Invent> filteredInvent;
-	// Коллекции номенклатур
+	// Коллекции ордеров (налоговая)
 	public List<Invoice> ordersList;
-	//public List<Invent> filteredInvent;
-	// Текущая страница(контент) 
+	
+	// Основная страница с динамическим контентом(layoutUnit "centerlayot")  
 	private String currentPage = "/pages/customers.xhtml";
 	
 	
 	/**
-	 *  авторизация пользователя
+	 *  user authorization
 	 */
 	public String login(){
+		Locale locale = new Locale("ru");
+		FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+		//FacesMessage.
 		// список пользователей из БД
-		List<User> list = loadUsers();
+		List<User> list = userBO.findAllUsers();
 		// поиск в коллекции 
 		for (User usr : list) {
-		  if(usr.equals(user)){
-		loadCustomers();
-		this.user = usr;
-		return "success";
-		  }
+	 if(usr.equals(user)){
+	    loadCustomers();
+	    this.user = usr;
+		    return "success";
+	 }
 		}
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "loginfailed";
+		// закрытие сессии
+	 FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		    return "loginfailed";
 	}
 	
 	/**

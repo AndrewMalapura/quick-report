@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 public class InvoiceLine implements Serializable {
 
 	/**
-	 * 
+	 * Строки налоговой наклакдной
 	 */
 	private static final long serialVersionUID = 6806008116767082342L;
 	//private String salesid;
