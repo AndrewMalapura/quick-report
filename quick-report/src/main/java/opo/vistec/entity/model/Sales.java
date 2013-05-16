@@ -28,8 +28,9 @@ public class Sales implements Serializable{
 	private String carnumber;
 	private Date createdtime;
 	private Date modifiedtime;
-	private String salesman; 
-	private List<SalesLine> salesList;
+	private String salesman;
+	//private Set<SalesLine> salesList ;
+	private List<Invent> salesList;
 	
 	// Getters and Setters
 	public String getSalesid() {
@@ -128,10 +129,10 @@ public class Sales implements Serializable{
 	public void setSalesman(String salesman) {
 		this.salesman = salesman;
 	}
-	public List<SalesLine> getSalesList() {
+	public List<Invent> getSalesList() {
 		return salesList;
 	}
-	public void setSalesList(List<SalesLine> salesList) {
+	public void setSalesList(List<Invent> salesList) {
 		this.salesList = salesList;
 	}
 }
