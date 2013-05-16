@@ -14,31 +14,31 @@
  
 <p:panelGrid style="vertical-align:top; width:148mm; border: 2px solid black; text-align: center; margin:0 auto;">
 		<p:row >  
-            <p:column  style="text-align:left; vertical-align: top; width:80mm;">        
-        		<h:outputLabel value="Поставщик:" />              		
+            <p:column  style="text-align:left; vertical-align: top; width:50%;">        
+        		<h:outputLabel value="Поставщик:" style="font-size: 11pt ; font-weight: bold; font-style:  italic; font-stretch: condensed;"/>              		
            </p:column>  
             <p:column style="border: 1px solid black;" rowspan="5">
             	<h:outputLabel value="СЧЕТ-ФАКТУРА:" />
             </p:column>   
         </p:row>
          <p:row>  
-            <p:column  style="text-align: center;">  
-                ЧАО "Артемовский машиностроительный завод "Вистек" 
+            <p:column  style="text-align: center;  padding: 0 20px 0 20px;" >  
+                <h:outputText value="#{producer.works_name}" />
             </p:column>  
         </p:row>  
         <p:row>  
-            <p:column  style="text-align: center;">  
-                т/с №26007045620402 в АО "Сведбанк", (публичное) г. Киев 
+            <p:column  style="text-align: center; padding: 0 10px 0 10px; ">  
+               <h:outputText value="#{producer.bank_details}" />
             </p:column>  
         </p:row>
         <p:row>  
             <p:column  style="text-align: center;">  
-                МФО 300164  Код ОКПО 100333776  
+                МФО <h:outputText value="#{producer.mfo}" /> Код ОКПО <h:outputText value="#{producer.okpo}" />  
             </p:column>  
         </p:row>  
         <p:row>  
             <p:column  style="text-align: center;">  
-                ИНН 312264505021 
+                ИНН <h:outputText value="#{producer.inn}" />
             </p:column>  
         </p:row>     
 		<p:row> 	 
