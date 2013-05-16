@@ -12,14 +12,51 @@
 
 <p:growl id="messages" showDetail="true"/>  
  
-<p:panelGrid columns="2">
-		<p:row>  
-            <p:column><h:outputLabel value="Поставщик:" /></p:column>
-            <p:column><h:outputLabel value="СЧЕТ-ФАКТУРА:" /></p:column>   
-        </p:row>    
+<p:panelGrid style="vertical-align:top; width:148mm; border: 2px solid black; text-align: center; margin:0 auto;">
+		<p:row >  
+            <p:column  style="text-align:left; vertical-align: top; width:80mm;">        
+        		<h:outputLabel value="Поставщик:" />              		
+           </p:column>  
+            <p:column style="border: 1px solid black;" rowspan="5">
+            	<h:outputLabel value="СЧЕТ-ФАКТУРА:" />
+            </p:column>   
+        </p:row>
+         <p:row>  
+            <p:column  style="text-align: center;">  
+                ЧАО "Артемовский машиностроительный завод "Вистек" 
+            </p:column>  
+        </p:row>  
+        <p:row>  
+            <p:column  style="text-align: center;">  
+                т/с №26007045620402 в АО "Сведбанк", (публичное) г. Киев 
+            </p:column>  
+        </p:row>
+        <p:row>  
+            <p:column  style="text-align: center;">  
+                МФО 300164  Код ОКПО 100333776  
+            </p:column>  
+        </p:row>  
+        <p:row>  
+            <p:column  style="text-align: center;">  
+                ИНН 312264505021 
+            </p:column>  
+        </p:row>     
 		<p:row> 	 
-      		<p:column colspan="2"><h:outputLabel value="Плательщик:" /></p:column>      
- 	   </p:row>      
+      		<p:column colspan="2" style="text-align:left; border: 1px solid black; height:65;">
+      			<h:outputLabel value="Плательщик:" />
+      		</p:column>      
+ 	   </p:row>
+ 	   <p:row> 	 
+      		<p:column colspan="2" style="text-align:left; border: 1px solid black;"><h:outputLabel value="Условия оплаты:" /></p:column>      
+ 	   </p:row>
+ 	   <p:row> 	 
+      		<p:column colspan="2" style="text-align:left; border: 1px solid black;"><h:outputLabel value="Договор:" /></p:column>      
+ 	   </p:row> 
+ 	   <p:row> 
+ 	   		<p:column colspan="2" style="height:100px; border: 1px solid black;">
+ 	   		TABLE
+ 	   		</p:column>
+ 	   </p:row>     
    <!--  <h:outputLabel for="customer" value="Покупатель: *" />  
     <p:inputText id="customer" value="" label="Customer" />  
   

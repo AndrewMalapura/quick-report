@@ -138,6 +138,8 @@ public class SessionBean implements Serializable {
 			i++;
 		}
 	}
+
+	
 //  ----------  getters and setters ------------------
 	public UserBO getUserBO() {
 		return userBO;

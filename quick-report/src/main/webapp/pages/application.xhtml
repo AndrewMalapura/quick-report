@@ -29,16 +29,18 @@
             <p:menuitem id="allcontract" value="Котракты" actionListener="#{sessionBean.viewContracts}" update="messages, :content" icon="ui-icon-document-b" />         	
         </p:submenu>  
         <p:submenu label="Реализация" icon="ui-icon-newwin">  
-            <p:menuitem id="allsale" value="Вся таблица" actionListener="#{sessionBean.viewSales}"
-             update="messages, :content" icon="ui-icon-close" />
-             <p:menuitem id="orders" value="Ордера налоговой" actionListener="#{sessionBean.loadOrders}"
-             update="messages, :content" icon="ui-icon-close" />  
+            <p:menuitem id="allsale" value="Заказы" actionListener="#{sessionBean.viewSales}"
+             update="messages, :content" icon="ui-icon-info" />
+            <p:menuitem id="orders" value="Ордера налоговой" actionListener="#{sessionBean.loadOrders}"
+             update="messages, :content" icon="ui-icon-info" />
+            <p:menuitem id="chit" value="Создать счет-фактуру" outcome="chit"
+             update="messages, :content" icon="ui-icon-info" />  
         </p:submenu>  
         <p:separator />
         <p:submenu label="Администрирование" icon="ui-icon-newwin">  
             <p:menuitem value="Пользователи" actionListener="#{sessionBean.viewUsers}" update="messages, :content" icon="ui-icon-person" />  
         </p:submenu>    
-        <p:submenu label="Ссылки" icon="ui-icon-extlink">  
+        <p:submenu label="Ссылки" icon="ui-icon-info">  
             <p:submenu label="Prime Links">  
                 <p:menuitem value="Prime" url="http://www.prime.com.tr" />  
                 <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />  
