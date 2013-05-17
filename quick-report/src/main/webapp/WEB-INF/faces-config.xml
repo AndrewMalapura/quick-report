@@ -62,5 +62,21 @@
 			<value>#{invoiceBO}</value>
 		</managed-property>
 	</managed-bean>
- 
+	<managed-bean>
+		<managed-bean-name>chitFormBean</managed-bean-name>
+		<managed-bean-class>opo.vistec.ChitFormBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>customerBO</property-name>
+			<value>#{customerBO}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>salesBO</property-name>
+			<value>#{salesBO}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>inventBO</property-name>
+			<value>#{inventBO}</value>
+		</managed-property>
+	</managed-bean> 
 </faces-config>

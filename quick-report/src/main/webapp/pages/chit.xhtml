@@ -17,23 +17,33 @@
             <p:column  style="text-align:left; vertical-align: top; width:50%;">        
         		<h:outputLabel value="Поставщик:" style="font-size: 11pt ; font-weight: bold; font-style:  italic; font-stretch: condensed;"/>              		
            </p:column>  
-            <p:column style="border: 1px solid black;" rowspan="5">
-            	<h:outputLabel value="СЧЕТ-ФАКТУРА:" />
+            <p:column style="border: 1px solid black;" rowspan="2">
+            	<h:outputLabel value="СЧЕТ-ФАКТУРА:" /><h:outputLabel value="#{chitFormBean.sale.salesid}" />
             </p:column>   
         </p:row>
          <p:row>  
             <p:column  style="text-align: center;  padding: 0 20px 0 20px;" >  
                 <h:outputText value="#{producer.works_name}" />
-            </p:column>  
+            </p:column>   
         </p:row>  
         <p:row>  
             <p:column  style="text-align: center; padding: 0 10px 0 10px; ">  
                <h:outputText value="#{producer.bank_details}" />
+            </p:column> 
+            <p:column style="border: 1px solid black; vertical-align: top;" rowspan="4">
+            	№<h:outputLabel id="salesid" value="#{chitFormBean.sale.salesid}"/>
+            	 <p:ajax event="click" update="salesid"   
+                    listener="#{chitFormBean.setSaledid}"/>  
             </p:column>  
         </p:row>
         <p:row>  
             <p:column  style="text-align: center;">  
                 МФО <h:outputText value="#{producer.mfo}" /> Код ОКПО <h:outputText value="#{producer.okpo}" />  
+            </p:column>  
+        </p:row> 
+        <p:row>  
+            <p:column  style="text-align: center;">  
+                № свидетельства <h:outputText value="#{producer.sertif_num}" />  
             </p:column>  
         </p:row>  
         <p:row>  

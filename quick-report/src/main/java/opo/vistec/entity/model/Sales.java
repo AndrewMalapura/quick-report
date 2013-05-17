@@ -13,7 +13,7 @@ public class Sales implements Serializable{
 	 *  Таблица SalesTable
 	 */
 	private static final long serialVersionUID = 1L;
-	private String salesid ;
+	private String salesid;
 	private Customer custaccount;
 	private Date deliverydate;
 	private String currencycode;
