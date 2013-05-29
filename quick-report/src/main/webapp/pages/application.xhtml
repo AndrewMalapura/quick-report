@@ -29,7 +29,7 @@
             <p:menuitem id="allcontract" value="Котракты" actionListener="#{sessionBean.viewContracts}" update="messages, :content" icon="ui-icon-document-b" />         	
         </p:submenu>  
         <p:submenu label="Реализация" icon="ui-icon-newwin">  
-            <p:menuitem id="allsale" value="Заказы" actionListener="#{sessionBean.viewSales}"
+            <p:menuitem id="allsale" value="Вся реализация" actionListener="#{sessionBean.viewSales}"
              update="messages, :content" icon="ui-icon-info" />
             <p:menuitem id="orders" value="Ордера налоговой" actionListener="#{sessionBean.loadOrders}"
              update="messages, :content" icon="ui-icon-info" />
@@ -39,7 +39,10 @@
         <p:separator />
         <p:submenu label="Администрирование" icon="ui-icon-newwin">  
             <p:menuitem value="Пользователи" actionListener="#{sessionBean.viewUsers}" update="messages, :content" icon="ui-icon-person" />  
-        </p:submenu>    
+        </p:submenu> 
+        <p:submenu label="Отчеты" icon="ui-icon-newwin">
+            <p:menuitem value="Оптовая цена по номенклатуре" outcome="wholesale" update="messages, :content" icon="ui-icon-person" />
+        </p:submenu>   
         <p:submenu label="Ссылки" icon="ui-icon-info">  
             <p:submenu label="Prime Links">  
                 <p:menuitem value="Prime" url="http://www.prime.com.tr" />  

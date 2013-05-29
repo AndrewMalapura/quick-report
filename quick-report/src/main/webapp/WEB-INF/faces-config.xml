@@ -10,11 +10,12 @@
     	<el-resolver>
     		org.springframework.web.jsf.el.SpringBeanFacesELResolver
     	</el-resolver>
-    	<resource-bundle>
+    	<resource-bundle> <!-- get from properties file -->
     		<base-name>opo.vistec.producer</base-name>
-    		<var>producer</var>
+    		<var>producer</var> 
     	</resource-bundle>
   	</application>
+  	
   	<navigation-rule>
    		<from-view-id>index.xhtml</from-view-id>
     	<navigation-case>
@@ -31,12 +32,19 @@
    		</navigation-case>
   	</navigation-rule>
   	<navigation-rule>
-   <from-view-id>pages/application.xhtml</from-view-id>
-   <navigation-case>
-       <from-outcome>chit</from-outcome>
-       <to-view-id>pages/chit.xhtml</to-view-id>
-   </navigation-case>
-</navigation-rule>
+   		<from-view-id>pages/application.xhtml</from-view-id>
+   		<navigation-case>
+      		 <from-outcome>chit</from-outcome>
+       		<to-view-id>pages/chit.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+   		<from-view-id>pages/application.xhtml</from-view-id>
+   		<navigation-case>
+      		 <from-outcome>wholesale</from-outcome>
+       		<to-view-id>pages/wholesale.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
 	<managed-bean>
 		<managed-bean-name>sessionBean</managed-bean-name>
 		<managed-bean-class>opo.vistec.SessionBean</managed-bean-class>
@@ -62,6 +70,7 @@
 			<value>#{invoiceBO}</value>
 		</managed-property>
 	</managed-bean>
+	
 	<managed-bean>
 		<managed-bean-name>chitFormBean</managed-bean-name>
 		<managed-bean-class>opo.vistec.ChitFormBean</managed-bean-class>
@@ -78,5 +87,15 @@
 			<property-name>inventBO</property-name>
 			<value>#{inventBO}</value>
 		</managed-property>
-	</managed-bean> 
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>deliveryProtocolBean</managed-bean-name>
+		<managed-bean-class>opo.vistec.DeliveryProtocolBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>salesLineBO</property-name>
+			<value>#{salesLineBO}</value>
+		</managed-property>
+	</managed-bean>  
 </faces-config>

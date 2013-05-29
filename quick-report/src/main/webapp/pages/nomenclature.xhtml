@@ -9,7 +9,7 @@
 <body>
 <ui:composition>
 <h:form id="sorted-table" style="font-size: 8pt;">  
-    <p:dataTable id="inventTbl" var="invent" value="#{sessionBean.inventList}" sortMode="multiple" widgetVar="inventTable"   
+    <p:dataTable id="invent" var="invent" value="#{sessionBean.inventList}" sortMode="multiple" widgetVar="inventTable"   
             emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredInvent}" 
             rows="25" paginator="true" paginatorPosition="bottom" > 
     	<f:facet name="header">  

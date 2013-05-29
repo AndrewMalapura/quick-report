@@ -1,5 +1,6 @@
 package opo.vistec.entity.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import opo.vistec.dao.SalesDAO;
@@ -17,5 +18,9 @@ public class SalesBoImpl implements SalesBo {
 	public List<Sales> findAllSales() {
 		return salesDAO.findAllSales();
 	}
-
+	@Override
+	public List<Sales> findByDate(Date start, Date end) {
+		return salesDAO.findByDateInterval(start, end);
+	}
+   
 }

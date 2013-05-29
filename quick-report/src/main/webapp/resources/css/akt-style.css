@@ -1,0 +1,23 @@
+.border{
+	border: 1px solid #000;
+	height: 440px;
+	width: 634px;
+	text-align: center; 
+}
+.border #form{
+	border: 1px solid #000;
+	title: "¬ведите данные"; 
+}
+.ui-button-text{
+font-size: 10pt !important;	
+}
+.date_picker input{
+	width: 180px !important;
+	font-size: 11pt !important;
+	font-weight: bold !important;
+}
+.ui-datepicker{
+	width: 180px !important;
+	height: 180px !important;
+	font-size: 10pt !important;
+}

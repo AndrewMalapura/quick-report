@@ -24,10 +24,7 @@ public class ChitFormBean implements Serializable{
 	InventBo inventBO;
 	
 	private Sales sale = new Sales();
-	
-	public void setSalesid(){
-		sale.setSalesid("0000/00");
-	}
+
 	
 	// -------- getters and setters ----------
 	public CustomerBo getCustomerBO() {

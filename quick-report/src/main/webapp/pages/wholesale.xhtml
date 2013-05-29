@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+    	<h:outputStylesheet library="css" name="akt-style.css" target="head" />
+    	<script type="text/javascript">
+PrimeFaces.locales ['ru'] = {
+	    closeText: 'Закрыть',
+	    prevText: 'Назад',
+	    nextText: 'Вперёд',
+	    monthNames: ['Январь', 'Февраль' , 'Март' , 'Апрель' , 'Май' , 'Июнь' , 'Июль' , 'Август' , 'Сентябрь','Октябрь','Ноябрь','Декабрь' ],
+	    monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек' ],
+	    dayNames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Субота'],
+	    dayNamesShort: ['Воск','Пон' , 'Вт' , 'Ср' , 'Четв' , 'Пят' , 'Суб'],
+	    dayNamesMin: ['В', 'П', 'Вт', 'С ', 'Ч', 'П ', 'Сб'],
+	    weekHeader: 'Неделя',
+	    firstDay: 1,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix:'',
+	    timeOnlyTitle: 'Только время',
+	    timeText: 'Время',
+	    hourText: 'Час',
+	    minuteText: 'Минута',
+	    secondText: 'Секунда',
+	    currentText: 'Сегодня',
+	    ampm: false,
+	    month: 'Месяц',
+	    week: 'неделя',
+	    day: 'День',
+	    allDayText: 'Весь день'
+};
+</script>
+    </h:head>
+<h:body>
+    <div class="border">
+    <h:form id="form" >
+    <h:panelGrid columns="3" cellpadding="5">  
+    <h:outputText value="Начальная дата:" />  
+    <h:outputText value="Конечная дата:" />
+    <h:outputText value="Номенклатура:" /><div></div>
+      
+    <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.start}" locale="ru" showButtonPanel="true" navigator="true" id="startCal"/>  
+    <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.end}" locale="ru" showButtonPanel="true" navigator="true" id="endCal"/>   
+	<p:inputText id="itemid" value="#{deliveryProtocolBean.itemid}"/>
+	<p:commandButton value="Select Invent" icon="ui-icon-extlink" action="dialog:selectCar">  
+        <p:ajax event="dialogReturn" listener="#{deliveryProtocolBean.onDialogReturn}" update="itemid" />  
+    </p:commandButton>  
+	
+	<div></div><p:commandButton value="Добавить" actionListener="#{deliveryProtocolBean.addData}" /><div></div><div></div>
+</h:panelGrid>  
+    </h:form> 
+    </div> 
+</h:body>
+</html>
