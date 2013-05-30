@@ -5,14 +5,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import opo.vistec.entity.SalesLineBo;
 import opo.vistec.entity.model.Invent;
 import opo.vistec.entity.model.SalesLine;
 
-import org.primefaces.event.SelectEvent;
+import org.primefaces.context.RequestContext;
 
 public class DeliveryProtocolBean implements Serializable {
 
@@ -28,22 +25,27 @@ public class DeliveryProtocolBean implements Serializable {
     private Date start;
     private Date end;
     private String itemid;
+    private Invent selectedInvent;
     
-    public void handleDateSelect(SelectEvent event) {  
-         
-    } 
+    public void onRowSelect() {  
+    	itemid = selectedInvent.getItemid();
+    	RequestContext rc = RequestContext.getCurrentInstance();
+        rc.execute("selectInvent.hide()");
+    }  
+ 
     /**
      * Диалог для выбора номенклатурного номера
      * @param event
      */
     
-    public String viewInvents() {  
-        return "dialog:selectInvent";  
-    }
-    
     public void addData(){
+    	
     	sold = salesLineBO.findSoldByDate(start, end, itemid);
-    	System.out.println("размер коллекции - "+sold.size());
+    	if(sold.size() == 0) System.out.println("Голяк!!!");
+    	else
+    	for (SalesLine itrbl : sold) {
+			System.out.println(" "+itrbl.getItemid().getItemid()+" | "+itrbl.getItemid().getItemname()+" | "+itrbl.getQty()+" "+itrbl.getUnitid());
+		}
     }
  
 	// ------------- getters and setters ---------------
@@ -84,6 +86,12 @@ public class DeliveryProtocolBean implements Serializable {
 	}
 	public void setWholesale_price(BigDecimal wholesale_price) {
 		this.wholesale_price = wholesale_price;
+	}
+	public Invent getSelectedInvent() {
+		return selectedInvent;
+	}
+	public void setSelectedInvent(Invent selectedInvent) {
+		this.selectedInvent = selectedInvent;
 	}
 	
 

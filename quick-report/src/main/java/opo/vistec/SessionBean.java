@@ -8,6 +8,9 @@ import java.util.Locale;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
 import opo.vistec.auth.UserBO;
 import opo.vistec.auth.model.User;
 import opo.vistec.entity.*;
@@ -34,7 +37,7 @@ public class SessionBean implements Serializable {
 	InventBo inventBO;
 	InvoiceBo invoiceBO;
 	
-	Sales selectedSale;
+	
 	
 
 	/**
@@ -46,15 +49,23 @@ public class SessionBean implements Serializable {
 	// Коллекции заказов
 	public List<Sales> salesList;
 	public List<Sales> filteredSales;
+	Sales selectedSale;
 	// Коллекции номенклатур
 	public List<Invent> inventList = new ArrayList<Invent>();
 	public List<Invent> filteredInvent;
+	Invent selectedInvent;
 	// Коллекции ордеров (налоговая)
 	public List<Invoice> ordersList;
 	
 	// Основная страница с динамическим контентом(layoutUnit "centerlayot")  
 	private String currentPage = "/pages/customers.xhtml";
 	
+	
+	public void onRowSelect(SelectEvent event) {  
+    	System.out.println("onRowSelect");
+    	RequestContext rc = RequestContext.getCurrentInstance();
+        rc.execute("selectInvent.hide()");
+    }  
 	
 	/**
 	 *  user authorization
@@ -240,4 +251,12 @@ public class SessionBean implements Serializable {
 		this.selectedSale = selectedSale;
 	}
 	// ---------------  End getters, setters 
+
+	public Invent getSelectedInvent() {
+		return selectedInvent;
+	}
+
+	public void setSelectedInvent(Invent selectedInvent) {
+		this.selectedInvent = selectedInvent;
+	}
 }

@@ -17,7 +17,7 @@ PrimeFaces.locales ['ru'] = {
 	    monthNames: ['Январь', 'Февраль' , 'Март' , 'Апрель' , 'Май' , 'Июнь' , 'Июль' , 'Август' , 'Сентябрь','Октябрь','Ноябрь','Декабрь' ],
 	    monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек' ],
 	    dayNames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Субота'],
-	    dayNamesShort: ['Воск','Пон' , 'Вт' , 'Ср' , 'Четв' , 'Пят' , 'Суб'],
+	    dayNamesShort: ['Воск', 'Пон' , 'Вт' , 'Ср' , 'Четв' , 'Пят' , 'Суб'],
 	    dayNamesMin: ['В', 'П', 'Вт', 'С ', 'Ч', 'П ', 'Сб'],
 	    weekHeader: 'Неделя',
 	    firstDay: 1,
@@ -54,14 +54,14 @@ PrimeFaces.locales ['ru'] = {
 	<h:panelGrid columns="2" styleClass="invent-panel"> 
 	<p:inputText id="itemid" value="#{deliveryProtocolBean.itemid}"/>
 	<p:commandButton styleClass="select-invent" value="" title="Выбрать номенклатуру"
-	 icon="ui-icon-extlink" onclick="selectInvent.show()">
-	 <p:ajax event="click" listener="#{dialogBean.onDialogReturn}" update="mygrowl" />
-    </p:commandButton>  
+	 icon="ui-icon-extlink" onclick="selectInvent.show()" >
+	 <p:ajax update="itemid" />
+	 </p:commandButton>  
 	</h:panelGrid>
 	<div></div><p:commandButton value="Добавить" actionListener="#{deliveryProtocolBean.addData}" /><div></div>
 </h:panelGrid> 
 <p:dialog id="dialog" header="Номенклатуры" widgetVar="selectInvent" resizable="true" modal="true" 
-        width="600" showEffect="clip" hideEffect="fold">
+             showEffect="clip" hideEffect="fold" update="itemid">
  	<ui:include src="dialogs/selectInvent.xhtml"/>
 </p:dialog>  
     </h:form> 
