@@ -1,4 +1,4 @@
-.order-table{   
+/*.order-table{   
 	border-collapse:collapse;
 }
 
@@ -20,9 +20,21 @@
 	background:none repeat scroll 0 0 #F9F9F9;
 	border-top:1px solid #BBBBBB;
 }
-
+*/
 .ui-datatable .ui-column-filter{
 	display: none !important;
+}
+.ui-datatable{
+	font-size: 10pt !important;
+	text-align: center;
+}
+
+.ui-datatable-header{
+	height: 30px;
+}
+.ui-datatable-header{
+	height: 20px;
+	vertical-align: middle;
 }
 
 .ui-layout-north  .ui-layout-unit-content{
@@ -49,6 +61,18 @@
     overflow:visible !important;
 }
 
-.icon-search { 
-    background-image:url("#{resource['images/magnifier.png']}"); 
+.ui-sortable-column-icon
+{    
+    margin-left: 5px !important;
+    margin-bottom: 5px !important;
+    position: relative !important;
+}
+.ui-icon-triangle-1-n {
+    background-position: 0 -16px;
+}
+.ui-datatable thead{
+	height: 30px;
+}
+.ui-datatable thead span{
+	height: 30px;
 }

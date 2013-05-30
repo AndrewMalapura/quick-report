@@ -6,11 +6,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-<body>
+	<h:head>
+    	<h:outputStylesheet library="css" name="app-style.css" target="head" />
+    </h:head>
+<h:body>
 <ui:composition>
 <h:form id="sorted-table" style="font-size: 8pt;">  
 	<p:contextMenu for="salesTab">  
-        <p:menuitem value="Показать" update="dialog" icon="ui-icon-search" oncomplete="salesDialog.show()"/>  
+        <p:menuitem value="Показать" update="sale-dialog" icon="ui-icon-search" oncomplete="salesDialog.show()"/>  
         <p:menuitem value="Обновить" update="salesTab" icon="ui-icon-close" actionListener="#{sessionBean.loadSales}"/>  
     </p:contextMenu>  
     <p:dataTable id="salesTab" var="sales" value="#{sessionBean.salesList}"
@@ -54,7 +57,7 @@
     </p:blockUI> 
     
     <p:dialog header="Детали заказа #{sessionBean.selectedSale.salesid}" widgetVar="salesDialog" resizable="true"  
-              width="600" height="500" showEffect="clip" hideEffect="fold" id="dialog">  
+              width="600" height="500" showEffect="clip" hideEffect="fold" id="sale-dialog">  
   
         <h:panelGrid id="display" columns="2" cellpadding="4" style="margin: 0;">  
   			
@@ -90,5 +93,5 @@
     </p:dialog>  
 </h:form>
 </ui:composition>
-</body>
+</h:body>
 </html>

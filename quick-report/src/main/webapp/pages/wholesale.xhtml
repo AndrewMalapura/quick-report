@@ -8,6 +8,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
     	<h:outputStylesheet library="css" name="akt-style.css" target="head" />
+    	<h:outputStylesheet library="css" name="app-style.css" target="head" />
     	<script type="text/javascript">
 PrimeFaces.locales ['ru'] = {
 	    closeText: 'Закрыть',
@@ -39,22 +40,31 @@ PrimeFaces.locales ['ru'] = {
     </h:head>
 <h:body>
     <div class="border">
-    <h:form id="form" >
-    <h:panelGrid columns="3" cellpadding="5">  
+    <h:form id="form" header="For Blinova">
+    
+    <p:growl id="mygrowl" showDetail="true" />
+    
+ <h:panelGrid columns="3">  
     <h:outputText value="Начальная дата:" />  
     <h:outputText value="Конечная дата:" />
-    <h:outputText value="Номенклатура:" /><div></div>
+    <h:outputText value="Номенклатура:" />
       
     <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.start}" locale="ru" showButtonPanel="true" navigator="true" id="startCal"/>  
     <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.end}" locale="ru" showButtonPanel="true" navigator="true" id="endCal"/>   
+	<h:panelGrid columns="2" styleClass="invent-panel"> 
 	<p:inputText id="itemid" value="#{deliveryProtocolBean.itemid}"/>
-	<p:commandButton value="Select Invent" icon="ui-icon-extlink" action="dialog:selectCar">  
-        <p:ajax event="dialogReturn" listener="#{deliveryProtocolBean.onDialogReturn}" update="itemid" />  
+	<p:commandButton styleClass="select-invent" value="" title="Выбрать номенклатуру"
+	 icon="ui-icon-extlink" onclick="selectInvent.show()">
+	 <p:ajax event="click" listener="#{dialogBean.onDialogReturn}" update="mygrowl" />
     </p:commandButton>  
-	
-	<div></div><p:commandButton value="Добавить" actionListener="#{deliveryProtocolBean.addData}" /><div></div><div></div>
-</h:panelGrid>  
+	</h:panelGrid>
+	<div></div><p:commandButton value="Добавить" actionListener="#{deliveryProtocolBean.addData}" /><div></div>
+</h:panelGrid> 
+<p:dialog id="dialog" header="Номенклатуры" widgetVar="selectInvent" resizable="true" modal="true" 
+        width="600" showEffect="clip" hideEffect="fold">
+ 	<ui:include src="dialogs/selectInvent.xhtml"/>
+</p:dialog>  
     </h:form> 
-    </div> 
+    </div>  
 </h:body>
 </html>

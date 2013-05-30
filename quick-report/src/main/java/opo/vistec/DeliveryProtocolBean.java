@@ -36,10 +36,10 @@ public class DeliveryProtocolBean implements Serializable {
      * Диалог для выбора номенклатурного номера
      * @param event
      */
-    public void onDialogReturn(SelectEvent event) {  
-        Invent invent = (Invent) event.getObject();  
-        itemid=invent.getItemid();    
-    }  
+    
+    public String viewInvents() {  
+        return "dialog:selectInvent";  
+    }
     
     public void addData(){
     	sold = salesLineBO.findSoldByDate(start, end, itemid);

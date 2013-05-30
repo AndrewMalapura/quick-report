@@ -1,7 +1,8 @@
 .border{
 	border: 1px solid #000;
 	height: 440px;
-	width: 634px;
+	width: 650px;
+	margin: 0 auto;
 	text-align: center; 
 }
 .border #form{
@@ -13,6 +14,7 @@ font-size: 10pt !important;
 }
 .date_picker input{
 	width: 180px !important;
+	height: 20px;
 	font-size: 11pt !important;
 	font-weight: bold !important;
 }
@@ -20,4 +22,21 @@ font-size: 10pt !important;
 	width: 180px !important;
 	height: 180px !important;
 	font-size: 10pt !important;
+}
+.select-invent{
+	margin-left: 0;
+	width: 30px;
+	height: 30px;
+}
+.invent-panel{
+	border-collapse: collapse;
+	height: 30px;
+}
+.invent-panel input{
+	width:  130px;
+	height: 20px;
+}
+.invent-panel td{
+	padding: 0;
+    margin: 0; /* Поля вокруг текста */
 }

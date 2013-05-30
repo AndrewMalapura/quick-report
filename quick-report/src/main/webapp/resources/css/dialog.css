@@ -1,0 +1,11 @@
+.ui-datatable-tablewrapper{
+	font-size: 10pt !important;
+	font-weight: normal !important;
+}
+.ui-datatable-tablewrapper tr{
+	height: 10px !important;;
+}
+.ui-paginator{
+	font-size: 10pt !important;
+	font-weight: normal !important;
+}

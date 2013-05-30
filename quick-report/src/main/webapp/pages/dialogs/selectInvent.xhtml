@@ -3,30 +3,36 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
-    
+    xmlns:p="http://primefaces.org/ui"> 
     <h:head>
-        <title>Cars</title>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/dialog.css" />
-    </h:head>
-    
+        <title>Номенклатуры</title>
+        <h:outputStylesheet library="css" name="dialog.css" target="head" />
+    </h:head>   
     <h:body>
-        <h:form>
-            <p:dataTable var="invent" value="#{sessionBean.inventList}">
-                <p:column headerText="Номер">
+        <h:form>  
+            <p:dataTable styleClass="dlg-table" var="invent" value="#{sessionBean.inventList}" sortMode="multiple" 
+           emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredInvent}"
+     	   rows="12" paginator="true" paginatorPosition="bottom" widgetVar="invents">
+     	   <f:facet name="header">  
+            <p:outputPanel style="float:right; text-align:center;"> 
+            	<h:graphicImage alt="Поиск" library="images" name="magnifier.png" style="vertical-align:middle; margin:0 5px 0 0;"/>
+                <p:inputText id="globalFilter" onkeyup="invents.filter()" style="width:150px; " />  
+            </p:outputPanel>  
+        </f:facet>  
+                <p:column headerText="Номер" sortBy="#{invent.itemid}" filterBy="#{invent.itemid}">
                     <h:outputText value="#{invent.itemid}" />
                 </p:column>
 
-                <p:column headerText="Наименование"> 
+                <p:column headerText="Наименование" sortBy="#{invent.itemname}" filterBy="#{invent.itemname}"> 
             		<h:outputText value="#{invent.itemname}" />  
         		</p:column>  
   
-       			<p:column headerText="Ед. измерения">  
+       			<p:column headerText="Ед. измерения" sortBy="#{invent.salesunitid}">  
             		<h:outputText value="#{invent.salesunitid}" />  
         		</p:column> 
         		
         		<p:column headerText="Выбрать">  
-                    <p:commandButton icon="ui-icon-search" actionListener="#{sessionBean.selectInventFromDialog(invent)}" />  
+                    <p:commandButton icon="ui-icon-search" title="выбрать" actionListener="#{sessionBean.selectInventFromDialog(invent)}" />  
                 </p:column>  
             </p:dataTable>
         </h:form>

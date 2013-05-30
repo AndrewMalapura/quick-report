@@ -1,6 +1,7 @@
 package opo.vistec;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -46,7 +47,7 @@ public class SessionBean implements Serializable {
 	public List<Sales> salesList;
 	public List<Sales> filteredSales;
 	// Коллекции номенклатур
-	public List<Invent> inventList;
+	public List<Invent> inventList = new ArrayList<Invent>();
 	public List<Invent> filteredInvent;
 	// Коллекции ордеров (налоговая)
 	public List<Invoice> ordersList;
@@ -196,6 +197,7 @@ public class SessionBean implements Serializable {
 		this.salesList = salesList;
 	}
     public List<Invent> getInventList() {
+    	if(inventList.size()==0) loadInvent();
 		return inventList;
 	}
 	public void setInventList(List<Invent> inventList) {
