@@ -40,30 +40,87 @@ PrimeFaces.locales ['ru'] = {
     </h:head>
 <h:body>
     <div class="border">
-    <h:form id="form" header="For Blinova">
+    <h2>Оптовые цены за период по номенклатурным единицам</h2>
+    <h:form id="form" header="Elektrod">
     
     <p:growl id="mygrowl" showDetail="true" />
     
- <h:panelGrid columns="3">  
-    <h:outputText value="Начальная дата:" />  
+ <h:panelGrid columns="2">  
+    <h:outputText value="Начальная дата:" /> 
+    <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.start}" locale="ru" showButtonPanel="true" navigator="true" id="startCal"/> 
+     
     <h:outputText value="Конечная дата:" />
+    <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.end}" locale="ru" showButtonPanel="true" navigator="true" id="endCal"/>
+    
     <h:outputText value="Номенклатура:" />
-      
-    <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.start}" locale="ru" showButtonPanel="true" navigator="true" id="startCal"/>  
-    <p:calendar styleClass="date_picker" value="#{deliveryProtocolBean.end}" locale="ru" showButtonPanel="true" navigator="true" id="endCal"/>   
-	<h:panelGrid columns="2" styleClass="invent-panel"> 
+    <h:panelGrid columns="2" styleClass="invent-panel"> 
 	<p:inputText id="itemid" value="#{deliveryProtocolBean.itemid}"/>
-	<p:commandButton styleClass="select-invent" value="" title="Выбрать номенклатуру"
-	 icon="ui-icon-extlink" onclick="selectInvent.show()" >
-	 <p:ajax update="itemid" />
+	<p:commandButton styleClass="select-invent" value="" title="Выбрать номенклатуру" icon="ui-icon-extlink" onclick="selectInvent.show()" >
 	 </p:commandButton>  
 	</h:panelGrid>
-	<div></div><p:commandButton value="Добавить" actionListener="#{deliveryProtocolBean.addData}" /><div></div>
+    
+    <h:outputText id="quant" value="Количество:   " />
+    <p:inputText id="quantity" value="#{deliveryProtocolBean.quantity}" />
+      	
+	<div></div>
+	<p:commandButton value="Добавить" actionListener="#{deliveryProtocolBean.addData}"
+	ajax="true" update=":form_2:report-table"/>
 </h:panelGrid> 
 <p:dialog id="dialog" header="Номенклатуры" widgetVar="selectInvent" resizable="true" modal="true" 
              showEffect="clip" hideEffect="fold" update="itemid">
  	<ui:include src="dialogs/selectInvent.xhtml"/>
 </p:dialog>  
+    </h:form>
+    <h:form id="form_2">
+    <p:dataTable id="report-table" var="whosale" value="#{deliveryProtocolBean.wholesale_list}">  
+  
+        <f:facet name="header">  
+            Приёмо-сдаточный акт  
+        </f:facet>  
+  
+        <p:column headerText="Наименование продукции" >  
+  
+            <h:outputText value="#{whosale.product_name}" />  
+  
+        </p:column>  
+  
+        <p:column headerText="Ном. номер">  
+            <h:outputText value="#{whosale.invent_number}" />  
+        </p:column>  
+  
+        <p:column headerText="Марка">  
+            <h:outputText value="#{whosale.mark}" />  
+        </p:column>  
+  
+        <p:column headerText="Ед. изм." >  
+            <h:outputText value="#{whosale.unit}" />  
+        </p:column>  
+  
+  		<p:column headerText="Кол-во" >  
+            <h:outputText value="#{whosale.quantity}" />  
+        </p:column>  
+  
+        <p:column headerText="Сопст. цена">  
+            <h:outputText value="#{whosale.comparable_price}" />  
+        </p:column>  
+  
+        <p:column headerText="Оптовая цена" >  
+            <h:outputText value="#{whosale.wholesale_price}" />  
+        </p:column>  
+  
+  		<p:column headerText="Сумма в сопост." >  
+            <h:outputText value="#{whosale.sum_comparable}" />  
+        </p:column>
+        
+        <p:column headerText="Сумма в опт.">  
+            <h:outputText value="#{whosale.sum_wholesale}" />  
+        </p:column>
+  		
+        <f:facet name="footer">  
+            Итого:  
+        </f:facet>  
+  
+    </p:dataTable> 
     </h:form> 
     </div>  
 </h:body>

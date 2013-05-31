@@ -15,10 +15,12 @@ public class SalesLineDaoImpl extends HibernateDaoSupport implements SalesLineDA
 	@SuppressWarnings("unchecked")
 	public List<SalesLine> sold_invent(Date start, Date end,  String itemid){
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-		Query q = session.createQuery("from SalesLine where sales.deliverydate > :start AND sales.deliverydate < :end AND itemid.itemid= :itemid")
+		Query q = session.createQuery("from SalesLine where sales.deliverydate >= :start AND sales.deliverydate <= :end AND" +
+				" itemid.itemid= :itemid AND locationitemid= :locationitemid")
 				.setParameter("start", start)
 				.setParameter("end", end)
-				.setParameter("itemid", itemid);
+				.setParameter("itemid", itemid)
+				.setParameter("locationitemid", "52");
 		return q.list();
 	}
 

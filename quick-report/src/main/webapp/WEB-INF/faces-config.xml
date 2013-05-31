@@ -99,7 +99,7 @@
 	<managed-bean>
 		<managed-bean-name>deliveryProtocolBean</managed-bean-name>
 		<managed-bean-class>opo.vistec.DeliveryProtocolBean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>view</managed-bean-scope>
 		<managed-property>
 			<property-name>salesLineBO</property-name>
 			<value>#{salesLineBO}</value>

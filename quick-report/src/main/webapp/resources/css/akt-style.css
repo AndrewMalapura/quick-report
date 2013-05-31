@@ -1,7 +1,5 @@
 .border{
 	border: 1px solid #000;
-	height: 440px;
-	width: 650px;
 	margin: 0 auto;
 	text-align: center; 
 }
@@ -19,6 +17,7 @@ font-size: 10pt !important;
 	font-weight: bold !important;
 }
 .ui-datepicker{
+	
 	width: 180px !important;
 	height: 180px !important;
 	font-size: 10pt !important;
@@ -33,10 +32,11 @@ font-size: 10pt !important;
 	height: 30px;
 }
 .invent-panel input{
-	width:  130px;
+	width:  150px;
 	height: 20px;
 }
 .invent-panel td{
 	padding: 0;
     margin: 0; /* Поля вокруг текста */
+    text-align: left;
 }

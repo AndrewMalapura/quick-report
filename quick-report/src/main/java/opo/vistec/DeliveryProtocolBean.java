@@ -2,12 +2,15 @@ package opo.vistec;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import opo.vistec.entity.SalesLineBo;
 import opo.vistec.entity.model.Invent;
 import opo.vistec.entity.model.SalesLine;
+import opo.vistec.report.model.WholesaleBean;
 
 import org.primefaces.context.RequestContext;
 
@@ -25,10 +28,14 @@ public class DeliveryProtocolBean implements Serializable {
     private Date start;
     private Date end;
     private String itemid;
+    private Double quantity;
     private Invent selectedInvent;
+    
+    private ArrayList<WholesaleBean> wholesale_list = new ArrayList<WholesaleBean>();
     
     public void onRowSelect() {  
     	itemid = selectedInvent.getItemid();
+    	// закрыть диалоговое окно
     	RequestContext rc = RequestContext.getCurrentInstance();
         rc.execute("selectInvent.hide()");
     }  
@@ -39,13 +46,34 @@ public class DeliveryProtocolBean implements Serializable {
      */
     
     public void addData(){
-    	
+    	WholesaleBean wb = new WholesaleBean();
     	sold = salesLineBO.findSoldByDate(start, end, itemid);
     	if(sold.size() == 0) System.out.println("Голяк!!!");
-    	else
+    	else{
+    		wb.setProduct_name(sold.get(0).getItemid().getItemname()); // вставка название номенкл. единицы
+    		wb.setInvent_number(sold.get(0).getItemid().getItemid());  // вставка номер номенкл. единицы
+    		wb.setMark("52");  // марка
+    		wb.setUnit(sold.get(0).getUnitid()); // единицы измерения
+    		wb.setQuantity(quantity);   //  количество
+    		wb.setComparable_price("");
+    		wb.setSum_comparable("");
+    		//  расчет средней оптовой цены
+    		BigDecimal wholesale_cost = BigDecimal.valueOf(0.00);
+    		Double qty = 0.0;
     	for (SalesLine itrbl : sold) {
-			System.out.println(" "+itrbl.getItemid().getItemid()+" | "+itrbl.getItemid().getItemname()+" | "+itrbl.getQty()+" "+itrbl.getUnitid());
-		}
+    		wholesale_cost = wholesale_cost.add(BigDecimal.valueOf(itrbl.getPrice()));
+    		qty += itrbl.getQty();
+			}
+    	//System.out.println("Общая сумма="+wholesale_cost);
+    		/**оптовая цена**/
+    	   // BigDecimal bd_qty = BigDecimal.valueOf(qty);
+    	    wb.setWholesale_price(wholesale_cost.divide(BigDecimal.valueOf(sold.size()), 2, RoundingMode.HALF_UP));
+    		//wb.setSum_wholesale(wholesale_cost);
+    		
+    		// Дополняем список
+    		wholesale_list.add(wb);
+    	}
+    	    
     }
  
 	// ------------- getters and setters ---------------
@@ -92,6 +120,22 @@ public class DeliveryProtocolBean implements Serializable {
 	}
 	public void setSelectedInvent(Invent selectedInvent) {
 		this.selectedInvent = selectedInvent;
+	}
+
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
+	}
+
+	public ArrayList<WholesaleBean> getWholesale_list() {
+		return wholesale_list;
+	}
+
+	public void setWholesale_list(ArrayList<WholesaleBean> wholesale_list) {
+		this.wholesale_list = wholesale_list;
 	}
 	
 
