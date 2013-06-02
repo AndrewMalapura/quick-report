@@ -8,12 +8,12 @@ public class SalesLine implements Serializable {
 	/**
 	 * 
 	 * @author malapura
-	 * Строки заказов
+	 * sale strings
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Sales sales; 
-	private Invent itemid; 		// номенклатура
+	private Invent itemid; 		
 	private Integer numlines;		
 	private String locationitemid;
 	private Double qty;
@@ -106,4 +106,99 @@ public class SalesLine implements Serializable {
 		this.qty_real = qty_real;
 	}
 
+	@Override
+	public int hashCode() {
+	   final int prime = 31;
+	   int result = 1;
+	   result = prime * result + ((sales == null) ? 0 : sales.hashCode());
+	   result = prime * result + ((itemid == null) ? 0 : itemid.hashCode());
+	   result = prime * result + ((numlines == null) ? 0 : numlines.hashCode());
+	   result = prime * result + ((locationitemid == null) ? 0 : locationitemid.hashCode());
+	   result = prime * result + ((qty == null) ? 0 : qty.hashCode());
+	   result = prime * result + ((price == null) ? 0 : price.hashCode());
+	   result = prime * result + ((cost == null) ? 0 : cost.hashCode());
+	   result = prime * result + ((recid == null) ? 0 : recid.hashCode());
+	   result = prime * result + ((unitid == null) ? 0 : unitid.hashCode());
+	   result = prime * result + ((cost_nds == null) ? 0 : cost_nds.hashCode());
+	   result = prime * result + ((price_nds == null) ? 0 : price_nds.hashCode());
+	   result = prime * result + ((nds == null) ? 0 : nds.hashCode());
+	   result = prime * result + ((qty_real == null) ? 0 : qty_real.hashCode());	   
+	   return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+	   if (this == obj)
+	      return true;
+	   if (obj == null)
+	      return false;
+	   if (getClass() != obj.getClass())
+	      return false;
+	   SalesLine other = (SalesLine) obj;
+	   if (sales == null) {
+	      if (other.sales != null)
+	         return false;
+	      } else if (!sales.equals(other.sales))
+	         return false;
+	   if (itemid == null) {
+	      if (other.itemid != null)
+	         return false;
+	      } else if (!itemid.equals(other.itemid))
+	         return false;
+	   if (numlines == null) {
+		      if (other.numlines != null)
+		         return false;
+		      } else if (!numlines.equals(other.numlines))
+		         return false;
+	   if (locationitemid == null) {
+		      if (other.locationitemid != null)
+		         return false;
+		      } else if (!locationitemid.equals(other.locationitemid))
+		         return false;
+	   if (qty == null) {
+		      if (other.qty != null)
+		         return false;
+		      } else if (!qty.equals(other.qty))
+		         return false;
+	   if (price == null) {
+		      if (other.price != null)
+		         return false;
+		      } else if (!price.equals(other.price))
+		         return false;
+	   if (cost == null) {
+		      if (other.cost != null)
+		         return false;
+		      } else if (!cost.equals(other.cost))
+		         return false;
+	   if (recid == null) {
+		      if (other.recid != null)
+		         return false;
+		      } else if (!recid.equals(other.recid))
+		         return false;
+	   if (unitid == null) {
+		      if (other.unitid != null)
+		         return false;
+		      } else if (!unitid.equals(other.unitid))
+		         return false;
+	   if (cost_nds == null) {
+		      if (other.cost_nds != null)
+		         return false;
+		      } else if (!cost_nds.equals(other.cost_nds))
+		         return false;
+	   if (price_nds == null) {
+		      if (other.price_nds != null)
+		         return false;
+		      } else if (!price_nds.equals(other.price_nds))
+		         return false;
+	   if (nds == null) {
+		      if (other.nds != null)
+		         return false;
+		      } else if (!nds.equals(other.nds))
+		         return false;
+	   if (qty_real == null) {
+		      if (other.qty_real != null)
+		         return false;
+		      } else if (!qty_real.equals(other.qty_real))
+		         return false;
+	   return true;
+	  }
 }

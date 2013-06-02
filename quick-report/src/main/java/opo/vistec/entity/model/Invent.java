@@ -110,5 +110,105 @@ public class Invent implements Serializable{
 	public void setNds(Integer nds) {
 		this.nds = nds;
 	}	
-
+	
+	@Override
+	public int hashCode() {
+	   final int prime = 31;
+	   int result = 1;
+	   result = prime * result + ((recid == null) ? 0 : recid.hashCode());
+	   result = prime * result + ((itemid == null) ? 0 : itemid.hashCode());
+	   result = prime * result + ((itemgroupid == null) ? 0 : itemgroupid.hashCode());
+	   result = prime * result + ((itemname == null) ? 0 :itemname.hashCode());
+	   result = prime * result + ((itemtype == null) ? 0 : itemtype.hashCode());
+	   result = prime * result + ((bomunitid == null) ? 0 : bomunitid.hashCode());
+	   result = prime * result + ((modifieddate == null) ? 0 : modifieddate.hashCode());
+	   result = prime * result + ((modifiedby == null) ? 0 : modifiedby.hashCode());
+	   result = prime * result + ((createddate == null) ? 0 : createddate.hashCode());
+	   result = prime * result + ((createdby == null) ? 0 : createdby.hashCode());
+	   result = prime * result + ((locationunitid == null) ? 0 : locationunitid.hashCode());
+	   result = prime * result + ((salesunitid == null) ? 0 : salesunitid.hashCode());
+	   result = prime * result + ((nds == null) ? 0 : nds.hashCode());
+	   return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+	   if (this == obj)
+	      return true;
+	   if (obj == null)
+	      return false;
+	   if (getClass() != obj.getClass())
+	      return false;
+	   Invent other = (Invent) obj;
+	   if (recid == null) {
+	      if (other.recid != null)
+	         return false;
+	      } else if (!recid.equals(other.recid))
+	         return false;
+	   if (itemid == null) {
+	      if (other.itemid != null)
+	         return false;
+	      } else if (!itemid.equals(other.itemid))
+	         return false;
+	   if (itemgroupid == null) {
+		      if (other.itemgroupid != null)
+		         return false;
+		      } else if (!itemgroupid.equals(other.itemgroupid))
+		         return false;
+	   if (itemname == null) {
+		      if (other.itemname != null)
+		         return false;
+		      } else if (!itemname.equals(other.itemname))
+		         return false;
+	   if (itemtype == null) {
+		      if (other.itemtype != null)
+		         return false;
+		      } else if (!itemtype.equals(other.itemtype))
+		         return false;
+	   if (bomunitid == null) {
+		      if (other.bomunitid != null)
+		         return false;
+		      } else if (!bomunitid.equals(other.bomunitid))
+		         return false;
+	   if (modifieddate == null) {
+		      if (other.modifieddate != null)
+		         return false;
+		      } else if (!modifieddate.equals(other.modifieddate))
+		         return false;
+	   if (modifiedby == null) {
+		      if (other.modifiedby != null)
+		         return false;
+		      } else if (!modifiedby.equals(other.modifiedby))
+		         return false;
+	   if (createddate == null) {
+		      if (other.createddate != null)
+		         return false;
+		      } else if (!createddate.equals(other.createddate))
+		         return false;
+	   if (createdby == null) {
+		      if (other.createdby != null)
+		         return false;
+		      } else if (!createdby.equals(other.createdby))
+		         return false;
+	   if (locationunitid == null) {
+		      if (other.locationunitid != null)
+		         return false;
+		      } else if (!locationunitid.equals(other.locationunitid))
+		         return false;
+	   if (salesunitid == null) {
+		      if (other.salesunitid != null)
+		         return false;
+		      } else if (!salesunitid.equals(other.salesunitid))
+		         return false;
+	   if (saleslocationid == null) {
+		      if (other.saleslocationid != null)
+		         return false;
+		      } else if (!saleslocationid.equals(other.saleslocationid))
+		         return false;
+	   if (nds == null) {
+		      if (other.nds != null)
+		         return false;
+		      } else if (!nds.equals(other.nds))
+		         return false;
+	   return true;
+	  }
 }

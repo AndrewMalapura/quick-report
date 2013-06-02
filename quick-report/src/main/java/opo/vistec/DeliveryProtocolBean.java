@@ -23,8 +23,8 @@ public class DeliveryProtocolBean implements Serializable {
 	
 	SalesLineBo salesLineBO;
 	
-	private List<SalesLine> sold; // проданная продукция 
-    private BigDecimal wholesale_price;  /// оптовая цена
+	private List<SalesLine> sold; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+    private BigDecimal wholesale_price;  /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     private Date start;
     private Date end;
     private String itemid;
@@ -35,42 +35,42 @@ public class DeliveryProtocolBean implements Serializable {
     
     public void onRowSelect() {  
     	itemid = selectedInvent.getItemid();
-    	// закрыть диалоговое окно
+    	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     	RequestContext rc = RequestContext.getCurrentInstance();
         rc.execute("selectInvent.hide()");
     }  
  
     /**
-     * Диалог для выбора номенклатурного номера
+     * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
      * @param event
      */
     
     public void addData(){
     	WholesaleBean wb = new WholesaleBean();
     	sold = salesLineBO.findSoldByDate(start, end, itemid);
-    	if(sold.size() == 0) System.out.println("Голяк!!!");
+    	if(sold.size() == 0) System.out.println("Р“РѕР»СЏРє!!!");
     	else{
-    		wb.setProduct_name(sold.get(0).getItemid().getItemname()); // вставка название номенкл. единицы
-    		wb.setInvent_number(sold.get(0).getItemid().getItemid());  // вставка номер номенкл. единицы
-    		wb.setMark("52");  // марка
-    		wb.setUnit(sold.get(0).getUnitid()); // единицы измерения
-    		wb.setQuantity(quantity);   //  количество
+    		wb.setProduct_name(sold.get(0).getItemid().getItemname()); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    		wb.setInvent_number(sold.get(0).getItemid().getItemid());  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    		wb.setMark("52");  // пїЅпїЅпїЅпїЅпїЅ
+    		wb.setUnit(sold.get(0).getUnitid()); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    		wb.setQuantity(quantity);   //  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     		wb.setComparable_price("");
     		wb.setSum_comparable("");
-    		//  расчет средней оптовой цены
+    		//  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     		BigDecimal wholesale_cost = BigDecimal.valueOf(0.00);
     		Double qty = 0.0;
     	for (SalesLine itrbl : sold) {
     		wholesale_cost = wholesale_cost.add(BigDecimal.valueOf(itrbl.getPrice()));
     		qty += itrbl.getQty();
 			}
-    	//System.out.println("Общая сумма="+wholesale_cost);
-    		/**оптовая цена**/
+    	//System.out.println("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ="+wholesale_cost);
+    		/**пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ**/
     	   // BigDecimal bd_qty = BigDecimal.valueOf(qty);
     	    wb.setWholesale_price(wholesale_cost.divide(BigDecimal.valueOf(sold.size()), 2, RoundingMode.HALF_UP));
     		//wb.setSum_wholesale(wholesale_cost);
     		
-    		// Дополняем список
+    		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     		wholesale_list.add(wb);
     	}
     	    

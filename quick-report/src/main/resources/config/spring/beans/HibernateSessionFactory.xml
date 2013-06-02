@@ -25,6 +25,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
           <value>opo/vistec/hibernate/Invoice.hbm.xml</value>
           <value>opo/vistec/hibernate/InvoiceLine.hbm.xml</value>
           <value>opo/vistec/hibernate/Contract.hbm.xml</value>
+          <value>opo/vistec/hibernate/InventTrans.hbm.xml</value>
 		</list>
     </property>
 </bean>

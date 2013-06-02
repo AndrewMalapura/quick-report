@@ -69,4 +69,69 @@ public class Contract implements Serializable{
 		this.modifieddate = modifieddate;
 	}
 
+	@Override
+	public int hashCode() {
+	   final int prime = 31;
+	   int result = 1;
+	   result = prime * result + ((contractaccount == null) ? 0 : contractaccount.hashCode());
+	   result = prime * result + ((contractnumber == null) ? 0 : contractnumber.hashCode());
+	   result = prime * result + ((contractdate == null) ? 0 : contractdate.hashCode());
+	   result = prime * result + ((contractcode == null) ? 0 :contractcode.hashCode());
+	   result = prime * result + ((partneraccount == null) ? 0 : partneraccount.hashCode());
+	   result = prime * result + ((currencycode == null) ? 0 : currencycode.hashCode());
+	   result = prime * result + ((modifiedby == null) ? 0 : modifiedby.hashCode());
+	   result = prime * result + ((modifieddate == null) ? 0 : modifieddate.hashCode());
+	   return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+	   if (this == obj)
+	      return true;
+	   if (obj == null)
+	      return false;
+	   if (getClass() != obj.getClass())
+	      return false;
+	   Contract other = (Contract) obj;
+	   if (contractaccount == null) {
+	      if (other.contractaccount != null)
+	         return false;
+	      } else if (!contractaccount.equals(other.contractaccount))
+	         return false;
+	   if (contractnumber == null) {
+	      if (other.contractnumber != null)
+	         return false;
+	      } else if (!contractnumber.equals(other.contractnumber))
+	         return false;
+	   if (contractdate == null) {
+		      if (other.contractdate != null)
+		         return false;
+		      } else if (!contractdate.equals(other.contractdate))
+		         return false;
+	   if (contractcode == null) {
+		      if (other.contractcode != null)
+		         return false;
+		      } else if (!contractcode.equals(other.contractcode))
+		         return false;
+	   if (partneraccount == null) {
+		      if (other.partneraccount != null)
+		         return false;
+		      } else if (!partneraccount.equals(other.partneraccount))
+		         return false;
+	   if (currencycode == null) {
+		      if (other.currencycode != null)
+		         return false;
+		      } else if (!currencycode.equals(other.currencycode))
+		         return false;
+	   if (modifiedby == null) {
+		      if (other.modifiedby != null)
+		         return false;
+		      } else if (!modifiedby.equals(other.modifiedby))
+		         return false;
+	   if (modifieddate == null) {
+		      if (other.modifieddate != null)
+		         return false;
+		      } else if (!modifieddate.equals(other.modifieddate))
+		         return false;
+	   	   return true;
+	  }
 }

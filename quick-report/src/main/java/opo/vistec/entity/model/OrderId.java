@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class OrderId implements Serializable {
 
 	/**
-	 * 
+	 *   composite id key 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String salesid;

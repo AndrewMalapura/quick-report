@@ -15,9 +15,7 @@ public class Invoice implements Serializable {
 
 	private static final long serialVersionUID = -4840424253401955433L;
 	
-	private OrderId orderPK;
-	//private String invoiceid;
-	//private String salesid;
+	private OrderId orderPK; //  composite primary key
 	private Date invoicedate;
 	private String warrant;
 	private Date warrantdata;
@@ -27,27 +25,6 @@ public class Invoice implements Serializable {
 	private BigDecimal cost;
 	private List<InvoiceLine> invoiceList;
 	
-	/*public String getInvoiceid() {
-		return invoiceid;
-	}
-	public void setInvoiceid(String invoiceid) {
-		this.invoiceid = invoiceid;
-	}
-	public String getSalesid() {
-		return salesid;
-	}
-	public void setSalesid(String salesid) {
-		this.salesid = salesid;
-	}
-	
-	
-	
-	public OrderId getOrderid() {
-		return orderid;
-	}
-	public void setOrderid(OrderId orderid) {
-		this.orderid = orderid;
-	}*/
 	public Date getInvoicedate() {
 		return invoicedate;
 	}
@@ -104,4 +81,75 @@ public class Invoice implements Serializable {
 		this.orderPK = orderPK;
 	}
 
+	@Override
+	public int hashCode() {
+	   final int prime = 31;
+	   int result = 1;
+	   result = prime * result + ((orderPK == null) ? 0 : orderPK.hashCode());
+	   result = prime * result + ((invoicedate == null) ? 0 : invoicedate.hashCode());
+	   result = prime * result + ((warrant == null) ? 0 : warrant.hashCode());
+	   result = prime * result + ((warrantdata == null) ? 0 : warrantdata.hashCode());
+	   result = prime * result + ((warrantwho == null) ? 0 : warrantwho.hashCode());
+	   result = prime * result + ((car == null) ? 0 : car.hashCode());
+	   result = prime * result + ((carnumber == null) ? 0 : carnumber.hashCode());
+	   result = prime * result + ((cost == null) ? 0 : cost.hashCode());
+	   result = prime * result + ((invoiceList == null) ? 0 : invoiceList.hashCode());
+	   return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+	   if (this == obj)
+	      return true;
+	   if (obj == null)
+	      return false;
+	   if (getClass() != obj.getClass())
+	      return false;
+	   Invoice other = (Invoice) obj;
+	   if (orderPK == null) {
+	      if (other.orderPK != null)
+	         return false;
+	      } else if (!orderPK.equals(other.orderPK))
+	         return false;
+	   if (invoicedate == null) {
+	      if (other.invoicedate != null)
+	         return false;
+	      } else if (!invoicedate.equals(other.invoicedate))
+	         return false;
+	   if (warrant == null) {
+		      if (other.warrant != null)
+		         return false;
+		      } else if (!warrant.equals(other.warrant))
+		         return false;
+	   if (warrantdata == null) {
+		      if (other.warrantdata != null)
+		         return false;
+		      } else if (!warrantdata.equals(other.warrantdata))
+		         return false;
+	   if (warrantwho == null) {
+		      if (other.warrantwho != null)
+		         return false;
+		      } else if (!warrantwho.equals(other.warrantwho))
+		         return false;
+	   if (car == null) {
+		      if (other.car != null)
+		         return false;
+		      } else if (!car.equals(other.car))
+		         return false;
+	   if (carnumber == null) {
+		      if (other.carnumber != null)
+		         return false;
+		      } else if (!carnumber.equals(other.carnumber))
+		         return false;
+	   if (cost == null) {
+		      if (other.cost != null)
+		         return false;
+		      } else if (!cost.equals(other.cost))
+		         return false;
+	   if (invoiceList == null) {
+		      if (other.invoiceList != null)
+		         return false;
+		      } else if (!invoiceList.equals(other.invoiceList))
+		         return false;
+	   return true;
+	  }
 }

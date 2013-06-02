@@ -9,8 +9,6 @@ public class InvoiceLine implements Serializable {
 	 * Строки налоговой наклакдной
 	 */
 	private static final long serialVersionUID = 6806008116767082342L;
-	//private String salesid;
-	//private String invoiceid;
 	private Invoice order;
 	private Invent invent;
 	private String locationinvent;
@@ -19,27 +17,7 @@ public class InvoiceLine implements Serializable {
 	private BigDecimal summa;
 	private String unitid;
 	private InvoiceLineId id;
-	//private Integer recid;
 	
-	/*public String getSalesid() {
-		return salesid;
-	}
-	public void setSalesid(String salesid) {
-		this.salesid = salesid;
-	}
-	public String getInvoiceid() {
-		return invoiceid;
-	}
-	public void setInvoiceid(String invoiceid) {
-		this.invoiceid = invoiceid;
-	}
-
-	public Integer getRecid() {
-		return recid;
-	}
-	public void setRecid(Integer recid) {
-		this.recid = recid;
-	}*/
 	public Invoice getOrder() {
 		return order;
 	}
@@ -82,12 +60,6 @@ public class InvoiceLine implements Serializable {
 	public void setUnitid(String unitid) {
 		this.unitid = unitid;
 	}
-	/*public OrderId getId() {
-		return id;
-	}
-	public void setId(OrderId id) {
-		this.id = id;
-	}*/
 	public InvoiceLineId getId() {
 		return id;
 	}
@@ -95,4 +67,69 @@ public class InvoiceLine implements Serializable {
 		this.id = id;
 	}
 	
+	@Override
+	public int hashCode() {
+	   final int prime = 31;
+	   int result = 1;
+	   result = prime * result + ((order == null) ? 0 : order.hashCode());
+	   result = prime * result + ((invent == null) ? 0 : invent.hashCode());
+	   result = prime * result + ((locationinvent == null) ? 0 : locationinvent.hashCode());
+	   result = prime * result + ((qty == null) ? 0 : qty.hashCode());
+	   result = prime * result + ((price == null) ? 0 : price.hashCode());
+	   result = prime * result + ((summa == null) ? 0 : summa.hashCode());
+	   result = prime * result + ((unitid == null) ? 0 : unitid.hashCode());
+	   result = prime * result + ((id == null) ? 0 : id.hashCode());
+	   return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+	   if (this == obj)
+	      return true;
+	   if (obj == null)
+	      return false;
+	   if (getClass() != obj.getClass())
+	      return false;
+	   InvoiceLine other = (InvoiceLine) obj;
+	   if (id == null) {
+	      if (other.id != null)
+	         return false;
+	      } else if (!id.equals(other.id))
+	         return false;
+	   if (order == null) {
+	      if (other.order != null)
+	         return false;
+	      } else if (!order.equals(other.order))
+	         return false;
+	   if (invent == null) {
+		      if (other.invent != null)
+		         return false;
+		      } else if (!invent.equals(other.invent))
+		         return false;
+	   if (locationinvent == null) {
+		      if (other.locationinvent != null)
+		         return false;
+		      } else if (!locationinvent.equals(other.locationinvent))
+		         return false;
+	   if (qty == null) {
+		      if (other.qty != null)
+		         return false;
+		      } else if (!qty.equals(other.qty))
+		         return false;
+	   if (price == null) {
+		      if (other.price != null)
+		         return false;
+		      } else if (!price.equals(other.price))
+		         return false;
+	   if (summa == null) {
+		      if (other.summa != null)
+		         return false;
+		      } else if (!summa.equals(other.summa))
+		         return false;
+	   if (unitid == null) {
+		      if (other.unitid != null)
+		         return false;
+		      } else if (!unitid.equals(other.unitid))
+		         return false;
+	   return true;
+	  }
 }
