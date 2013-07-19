@@ -15,7 +15,7 @@ public class Invent implements Serializable{
 	private String itemgroupid;
 	private String itemname; // название номенклатуры
 	private Integer itemtype;
-	private String bomunitid;
+	private String bomunitid;// единицы измерения
 	private Date modifieddate;
 	private String modifiedby;
 	private Date createddate;

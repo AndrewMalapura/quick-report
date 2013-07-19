@@ -40,6 +40,15 @@
    		<property name="sessionFactory" ref="sessionFactory" />
    	</bean>
  	
+ 	<bean id="salesLineBO" 
+         class="opo.vistec.entity.impl.SalesLineBoImpl" >
+   		<property name="salesLineDAO" ref="salesLineDAO" />
+   	</bean>
+   	<bean id="salesLineDAO" 
+         class="opo.vistec.dao.impl.SalesLineDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory" />
+   	</bean>
+ 	
  	<bean id="invoiceBO" 
          class="opo.vistec.entity.impl.InvoiceBoImpl" >
    		<property name="invoiceDAO" ref="invoiceDAO" />

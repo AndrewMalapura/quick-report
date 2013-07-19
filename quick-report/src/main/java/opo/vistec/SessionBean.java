@@ -2,19 +2,28 @@ package opo.vistec;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
-
 import opo.vistec.auth.UserBO;
 import opo.vistec.auth.model.User;
-import opo.vistec.entity.*;
-import opo.vistec.entity.model.*;
+import opo.vistec.entity.CustomerBo;
+import opo.vistec.entity.InventBo;
+import opo.vistec.entity.InvoiceBo;
+import opo.vistec.entity.SalesBo;
+import opo.vistec.entity.SalesLineBo;
+import opo.vistec.entity.model.Customer;
+import opo.vistec.entity.model.Invent;
+import opo.vistec.entity.model.Invoice;
+import opo.vistec.entity.model.Sales;
+import opo.vistec.entity.model.SalesLine;
+
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 
 /**
@@ -36,6 +45,7 @@ public class SessionBean implements Serializable {
 	SalesBo salesBO;
 	InventBo inventBO;
 	InvoiceBo invoiceBO;
+	SalesLineBo salesLineBO;
 	
 	
 	
@@ -49,6 +59,12 @@ public class SessionBean implements Serializable {
 	// Коллекции заказов
 	public List<Sales> salesList;
 	public List<Sales> filteredSales;
+	public List<Sales> realization;
+	// Реализация
+	public Date startDate;
+	public Date endDate;
+	public List<SalesLine> orders; // заказы с даты startdate по дату endDate
+	
 	Sales selectedSale;
 	// Коллекции номенклатур
 	public List<Invent> inventList = new ArrayList<Invent>();
@@ -62,7 +78,7 @@ public class SessionBean implements Serializable {
 	
 	
 	public void onRowSelect(SelectEvent event) {  
-    	System.out.println("onRowSelect");
+    	//System.out.println("onRowSelect");
     	RequestContext rc = RequestContext.getCurrentInstance();
         rc.execute("selectInvent.hide()");
     }  
@@ -113,7 +129,15 @@ public class SessionBean implements Serializable {
     	if(salesList==null) loadSales();    	
     	currentPage = "/pages/sales.xhtml";
     	addMessage("Все заказы"); 
-    } 
+    }
+    public void viewRealization(){
+    	loadRealization();
+    	System.out.println("orders size: "+orders.size());
+    	currentPage = "/pages/realization.xhtml";
+    	addMessage("Реализация за период");
+    }
+    
+    
     public void delete() {  
         addMessage("Data deleted");  
     }  
@@ -135,6 +159,9 @@ public class SessionBean implements Serializable {
 	public void loadSales(){
 		salesList = salesBO.findAllSales();
 	}
+	public void loadRealization(){
+    	orders = salesLineBO.getStringsRealization(startDate, endDate);
+    }
 	public void loadInvent(){
 		inventList = inventBO.findAllInvents();
 	}
@@ -258,5 +285,45 @@ public class SessionBean implements Serializable {
 
 	public void setSelectedInvent(Invent selectedInvent) {
 		this.selectedInvent = selectedInvent;
+	}
+
+	public List<Sales> getRealization() {
+		return realization;
+	}
+
+	public void setRealization(List<Sales> realization) {
+		this.realization = realization;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public List<SalesLine> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<SalesLine> orders) {
+		this.orders = orders;
+	}
+
+	public SalesLineBo getSalesLineBO() {
+		return salesLineBO;
+	}
+
+	public void setSalesLineBO(SalesLineBo salesLineBO) {
+		this.salesLineBO = salesLineBO;
 	}
 }

@@ -41,7 +41,7 @@ public class DeliveryProtocolBean implements Serializable {
     }  
  
     /**
-     * ������ ��� ������ ��������������� ������
+     * 
      * @param event
      */
     

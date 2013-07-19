@@ -76,6 +76,10 @@
 			<property-name>invoiceBO</property-name>
 			<value>#{invoiceBO}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>salesLineBO</property-name>
+			<value>#{salesLineBO}</value>
+		</managed-property>
 	</managed-bean>
 	
 	<managed-bean>

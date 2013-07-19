@@ -8,5 +8,6 @@ import opo.vistec.entity.model.SalesLine;
 public interface SalesLineDAO {
 	
 	public List<SalesLine> sold_invent(Date start, Date end,  String itemid);
+	public List<SalesLine> getStringsRealization(Date start, Date end);
 
 }

@@ -8,5 +8,6 @@ import opo.vistec.entity.model.SalesLine;
 public interface SalesLineBo {
 	
 	public List<SalesLine> findSoldByDate(Date start, Date end, String itemid);
+	public List<SalesLine> getStringsRealization(Date start, Date end);
 
 }

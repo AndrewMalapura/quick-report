@@ -7,7 +7,81 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
+        <h:outputStylesheet library="css" name="akt-style.css" target="head" />
+    	<h:outputStylesheet library="css" name="app-style.css" target="head" />
     </h:head>
 <h:body>
+<h:form id="realization" header="realization">
+<h:outputScript library="javascript" name="calendar.js" target="head"/>
+<div class="command">
+<h:panelGrid columns="5" >  
+    <h:outputText value="Начальная дата:" style="font-weight: bold;"/> 
+    <p:calendar styleClass="date_picker" value="#{sessionBean.startDate}" locale="ru" showButtonPanel="true" navigator="true" id="startCal"/>    
+    <h:outputText value="Конечная дата:" style="font-weight: bold;"/>
+    <p:calendar styleClass="date_picker" value="#{sessionBean.endDate}" locale="ru" showButtonPanel="true" navigator="true" id="endCal"/>
+	<p:commandButton value="Показать" title="Сформировать отчет" id="b_realiz" update="realizTable" actionListener="#{sessionBean.viewRealization}" >
+	</p:commandButton>
+</h:panelGrid><br/>
+</div>  
+   <p:dataTable id="realizTable" var="order" value="#{sessionBean.orders}" >
+   <f:facet name="header">
+    Реализация за период с <h:outputText value="#{sessionBean.startDate}"><f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
+    по <h:outputText value="#{sessionBean.endDate}" ><f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
+    </f:facet> 
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Накладная" />  
+            </f:facet>  
+            <h:outputText value="#{order.sales.salesid}" />  
+    </p:column>
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Клиент" />  
+            </f:facet>  
+            <h:outputText value="#{order.sales.custaccount.name}" />  
+    </p:column>
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Номенклат." /><br/>
+                <h:outputText value="номер" />  
+            </f:facet>  
+            <h:outputText value="#{order.itemid.itemid}" />  
+    </p:column> 
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Название" /><br/>
+                <h:outputText value="ном. ед." />  
+            </f:facet>  
+            <h:outputText value="#{order.itemid.itemname}" />  
+    </p:column>   
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Единицы" /><br/>
+                <h:outputText value="измерения" />  
+            </f:facet>  
+            <h:outputText value="#{order.unitid}" />  
+    </p:column>
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Кол-во" />  
+            </f:facet>  
+            <h:outputText value="#{order.qty}" />  
+    </p:column>
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Цена" /><br/>
+                <h:outputText value="(с НДС)" />  
+            </f:facet>  
+            <h:outputText value="#{order.price_nds}" />  
+    </p:column> 
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Cумма" /><br/>
+                <h:outputText value="(c НДС)" />  
+            </f:facet>  
+            <h:outputText value="#{order.cost_nds}" />  
+    </p:column>           
+   </p:dataTable>  
+</h:form>  
 </h:body>
 </html>

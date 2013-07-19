@@ -20,4 +20,9 @@ public class SalesLineBoImpl implements SalesLineBo {
 		return salesLineDAO.sold_invent(start, end, itemid);
 	}
 
+	@Override
+	public List<SalesLine> getStringsRealization(Date start, Date end) {
+		return salesLineDAO.getStringsRealization(start, end);
+	}
+
 }

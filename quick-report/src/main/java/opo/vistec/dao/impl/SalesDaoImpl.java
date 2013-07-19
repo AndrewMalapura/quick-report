@@ -30,7 +30,7 @@ public class SalesDaoImpl extends HibernateDaoSupport implements SalesDAO {
 	@Override
 	public List<Sales> findByDateInterval( Date start, Date end) {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-		Query q = session.createQuery("from Sales where deliverydate > :start AND deliverydate < :end")
+		Query q = session.createQuery("from Sales where deliverydate >= :start AND deliverydate <= :end")
 				.setParameter("start", start)
 				.setParameter("end", end);
 		return q.list();

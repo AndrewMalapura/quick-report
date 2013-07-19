@@ -24,4 +24,14 @@ public class SalesLineDaoImpl extends HibernateDaoSupport implements SalesLineDA
 		return q.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SalesLine> getStringsRealization(Date start, Date end) {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query q = session.createQuery("from SalesLine where sales.deliverydate >= :start AND sales.deliverydate <= :end")
+				.setParameter("start", start)
+				.setParameter("end", end);
+		return q.list();
+	}
+
 }
