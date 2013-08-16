@@ -25,16 +25,16 @@
 </div>  
    <p:dataTable id="realizTable" var="order" value="#{sessionBean.orders}" >
    <f:facet name="header">
-    Реализация за период с <h:outputText value="#{sessionBean.startDate}"><f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
-    по <h:outputText value="#{sessionBean.endDate}" ><f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
+    Реализация за период с <h:outputText value="#{sessionBean.startDate}"><f:convertDateTime pattern="dd.MM.yy" timeZone="Europe/Kiev" /></h:outputText>
+    по <h:outputText value="#{sessionBean.endDate}" ><f:convertDateTime pattern="dd.MM.yy" timeZone="Europe/Kiev" /></h:outputText>
     </f:facet> 
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Накладная" />  
+                <h:outputText value="Заказ" />  
             </f:facet>  
             <h:outputText value="#{order.sales.salesid}" />  
     </p:column>
-    <p:column>  
+    <p:column styleClass="clientsColumn">  
             <f:facet name="header">  
                 <h:outputText value="Клиент" />  
             </f:facet>  
@@ -56,8 +56,8 @@
     </p:column>   
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Единицы" /><br/>
-                <h:outputText value="измерения" />  
+                <h:outputText value="Ед." /><br/>
+                <h:outputText value="изм." />  
             </f:facet>  
             <h:outputText value="#{order.unitid}" />  
     </p:column>

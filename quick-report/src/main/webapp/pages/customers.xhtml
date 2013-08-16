@@ -6,43 +6,43 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-<body>
+<h:body>
 <ui:composition>
 <h:form id="sorted-table" style="font-size: 8pt;">  
     <p:dataTable id="dataTable" var="customer" value="#{sessionBean.custList}" sortMode="multiple" widgetVar="custTable"   
             emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredCustomers}" 
-            rows="25" paginator="true" paginatorPosition="bottom" > 
+            rows="25" paginator="true" paginatorPosition="bottom"> 
     	<f:facet name="header">  
             <p:outputPanel style="float:right; text-align:center;"> 
             	<h:graphicImage alt="search" library="images" name="magnifier.png" />
                 <p:inputText id="globalFilter" onkeyup="custTable.filter()" style="width:150px; " />  
             </p:outputPanel>  
         </f:facet>   
-        <p:column id="Accountnun" sortBy="#{customer.accountnun}" headerText="Accountnun" filterBy="#{customer.accountnun}">  
+        <p:column id="Accountnun" sortBy="#{customer.accountnun}" headerText="Клиент" filterBy="#{customer.accountnun}">  
             <h:outputText value="#{customer.accountnun}" />  
         </p:column>  
   
-        <p:column sortBy="#{customer.name}" headerText="Name" filterBy="#{customer.name}"> 
+        <p:column sortBy="#{customer.name}" headerText="Полное название клиента" filterBy="#{customer.name}"> 
             <h:outputText value="#{customer.name}" />  
         </p:column>  
   
-        <p:column sortBy="#{customer.currency}" headerText="Currency" filterBy="#{customer.currency}">  
+        <p:column sortBy="#{customer.currency}" headerText="Валюта" filterBy="#{customer.currency}">  
             <h:outputText value="#{customer.currency}" />  
         </p:column>  
   
-        <p:column sortBy="#{customer.country}" headerText="Country" filterBy="#{customer.country}">  
+        <p:column sortBy="#{customer.country}" headerText="Страна" filterBy="#{customer.country}">  
             <h:outputText value="#{customer.country}" />  
         </p:column>
         
-        <p:column sortBy="#{customer.createddate}" headerText="Created Date" filterBy="#{customer.createddate}">  
+        <p:column sortBy="#{customer.createddate}" headerText="Дата рег." filterBy="#{customer.createddate}">  
             <h:outputText value="#{customer.createddate}" />  
         </p:column>
         
-        <p:column sortBy="#{customer.createdby}" headerText="Who created" filterBy="#{customer.createdby}">  
+        <p:column sortBy="#{customer.createdby}" headerText="Регистратор" filterBy="#{customer.createdby}">  
             <h:outputText value="#{customer.createdby}" />  
         </p:column>  
     </p:dataTable> 
 </h:form>
 </ui:composition>
-</body>
+</h:body>
 </html>

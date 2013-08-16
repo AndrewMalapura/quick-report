@@ -27,11 +27,11 @@
                 <p:inputText id="globalFilter" onkeyup="saleTable.filter()" style="width:150px; " />  
             </p:outputPanel>  
         </f:facet>   
-        <p:column id="salesid" sortBy="#{sales.salesid}" headerText="Заказ" filterBy="#{sales.salesid}">  
+        <p:column sortBy="#{sales.salesid}" headerText="Заказ" filterBy="#{sales.salesid}">  
             <h:outputText value="#{sales.salesid}" />  
         </p:column>  
   
-        <p:column sortBy="#{sales.custaccount.name}" headerText="Клиент" filterBy="#{sales.custaccount.name}"> 
+        <p:column sortBy="#{sales.custaccount.name}" styleClass="clientColumn" headerText="Клиент" filterBy="#{sales.custaccount.name}"> 
             <h:outputText value="#{sales.custaccount.name}" />  
         </p:column>  
   

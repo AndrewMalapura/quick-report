@@ -132,7 +132,7 @@ public class SessionBean implements Serializable {
     }
     public void viewRealization(){
     	loadRealization();
-    	System.out.println("orders size: "+orders.size());
+    	System.out.println("orders size: "+orders.size()+"  "+startDate+" - "+endDate);
     	currentPage = "/pages/realization.xhtml";
     	addMessage("Реализация за период");
     }

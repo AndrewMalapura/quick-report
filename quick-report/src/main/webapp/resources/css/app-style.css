@@ -1,17 +1,18 @@
-div.#content{
-	height: 100% !important;
-	position: absolute !important;
+#content{
+	height: auto !important;
+	position: relative !important;
+	overflow: hidden;
 }
 #content_content{
 	height: auto !important;
-	margin: 0;
 	width: auto !important;
-	position: relative;
+	margin: 2px;
 }
 div#centerlayot{
 	padding: 2px;
 	border: 2px solid #000;
 	height: auto !important;
+	width: auto !important;
 	margin-top: 40px !important;	
 }
 .ui-datatable .ui-column-filter{
@@ -38,6 +39,11 @@ div#centerlayot{
 } 
 #sorted-table > div{
 	height: auto !important;
+	overflow: auto;
+}
+#sorted-table:dataTable{
+	overflow: auto;
+	width: 100%;
 }
 .ui-layout-container{
 	font-size: 9pt !important; 
@@ -51,11 +57,23 @@ div#centerlayot{
 	height: 50px;
 	overflow: visible;
 }
-.ui-datatable{
-	font-size: 9.5pt !important;
+.ui-datatable table{
+	font-size: 9pt !important;
 	text-align: center;
+	width: 100% !important;
+	
 }
-
+.ui-state-default .clientsColumn{
+	white-space: auto;
+	max-width: 200px;
+}
+.ui-datatable td,.ui-datatable th {
+    white-space: pre-wrap !important;
+    max-width: 400px;
+}
+.ui-datatable .clientColumn{
+	width: 100px !important;
+}
 .ui-datatable-header{
 	height: 25px;
 	background-color: white !important;
@@ -75,9 +93,17 @@ div#centerlayot{
 	background-color: gray !important;
 	text-align: center !important;
 }
-.ui-datatable thead{
+/*.ui-datatable thead{
 	height: 30px;
+	width: 100%;
 }
+th#realization:realizTable:j_idt56{
+	max-width: 100px !important;
+}
+#realization:realizTable > .ui-datatable-tablewrapper{
+	width: 100%;
+	overflow-x:auto !important;
+}*/
 .ui-sortable-column-icon
 {    
     margin-left: 5px !important;
