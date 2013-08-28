@@ -5,7 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <h:outputStylesheet library="css" name="akt-style.css" target="head" />
     	<h:outputStylesheet library="css" name="app-style.css" target="head" />
@@ -23,7 +24,8 @@
 	</p:commandButton>
 </h:panelGrid><br/>
 </div>  
-   <p:dataTable id="realizTable" var="order" value="#{sessionBean.orders}" >
+   <p:dataTable id="realizTable" var="order" value="#{sessionBean.orders}" styleClass="realizTable" 
+   rowStyleClass="#{order.sales.custaccount.notresident_ua eq 1 ? 'not-resident' : null}">
    <f:facet name="header">
     Реализация за период с <h:outputText value="#{sessionBean.startDate}"><f:convertDateTime pattern="dd.MM.yy" timeZone="Europe/Kiev" /></h:outputText>
     по <h:outputText value="#{sessionBean.endDate}" ><f:convertDateTime pattern="dd.MM.yy" timeZone="Europe/Kiev" /></h:outputText>
@@ -34,7 +36,13 @@
             </f:facet>  
             <h:outputText value="#{order.sales.salesid}" />  
     </p:column>
-    <p:column styleClass="clientsColumn">  
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Экс." />  
+            </f:facet>
+            <h:outputText value="#{order.sales.custaccount.notresident_ua}" />  
+    </p:column>
+    <p:column>  
             <f:facet name="header">  
                 <h:outputText value="Клиент" />  
             </f:facet>  
@@ -42,22 +50,25 @@
     </p:column>
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Номенклат." /><br/>
-                <h:outputText value="номер" />  
+                <h:outputText value="Ном. номер" />  
             </f:facet>  
             <h:outputText value="#{order.itemid.itemid}" />  
     </p:column> 
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Название" /><br/>
-                <h:outputText value="ном. ед." />  
+                <h:outputText value="Ном.группа" />  
+            </f:facet>  
+            <h:outputText value="#{order.itemid.itemgroupid}" />  
+    </p:column> 
+    <p:column>  
+            <f:facet name="header">  
+                <h:outputText value="Ном. единицы" />  
             </f:facet>  
             <h:outputText value="#{order.itemid.itemname}" />  
     </p:column>   
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Ед." /><br/>
-                <h:outputText value="изм." />  
+                <h:outputText value="Ед." />  
             </f:facet>  
             <h:outputText value="#{order.unitid}" />  
     </p:column>
@@ -69,19 +80,29 @@
     </p:column>
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Цена" /><br/>
-                <h:outputText value="(с НДС)" />  
+                <h:outputText value="Цена с НДС" />  
             </f:facet>  
             <h:outputText value="#{order.price_nds}" />  
     </p:column> 
     <p:column>  
             <f:facet name="header">  
-                <h:outputText value="Cумма" /><br/>
-                <h:outputText value="(c НДС)" />  
+                <h:outputText value="Cумма c НДС" />  
             </f:facet>  
             <h:outputText value="#{order.cost_nds}" />  
-    </p:column>           
+    </p:column> 
+    <f:facet name="footer" styleClass="summ-realization">  
+            <span>Итого : </span><h:outputText value="#{sessionBean.sum_realiz}" />  
+        </f:facet>            
    </p:dataTable>  
-</h:form>  
+	<p:blockUI block="realizTable" trigger="realizTable">  
+        <h:graphicImage library="images" name="table-loader.GIF"/>  
+    </p:blockUI> 
+	<p:panel header="Экспорт в Excel"> 
+		<h:commandLink>  
+            <p:graphicImage library="images" name="import-xls.jpg" style="width:32px; height:32px; "/>  
+            <p:dataExporter type="xls" target="realizTable" fileName="realization" />  
+        </h:commandLink>  
+	</p:panel>  
+	</h:form> 
 </h:body>
 </html>

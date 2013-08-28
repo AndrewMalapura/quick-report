@@ -12,7 +12,7 @@ public class Invent implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String itemid;
-	private String itemgroupid;
+	private String itemgroupid; // номенклатурная группа
 	private String itemname; // название номенклатуры
 	private Integer itemtype;
 	private String bomunitid;// единицы измерения

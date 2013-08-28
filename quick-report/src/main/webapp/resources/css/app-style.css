@@ -1,12 +1,12 @@
 #content{
 	height: auto !important;
 	position: relative !important;
-	overflow: hidden;
+	padding: 1px !important;
 }
 #content_content{
 	height: auto !important;
 	width: auto !important;
-	margin: 2px;
+	padding: 1px !important;
 }
 div#centerlayot{
 	padding: 2px;
@@ -39,11 +39,15 @@ div#centerlayot{
 } 
 #sorted-table > div{
 	height: auto !important;
-	overflow: auto;
+	overflow: hidden;
 }
 #sorted-table:dataTable{
 	overflow: auto;
 	width: 100%;
+}
+#sorted-table:lines div{
+	padding: 0 !important;
+}
 }
 .ui-layout-container{
 	font-size: 9pt !important; 
@@ -57,11 +61,14 @@ div#centerlayot{
 	height: 50px;
 	overflow: visible;
 }
+.ui-overlay-visible table{ /* таблица подробно заказ*/
+	border-collapse: collapse !important;
+}
 .ui-datatable table{
 	font-size: 9pt !important;
 	text-align: center;
 	width: 100% !important;
-	
+	padding: 1px !important;
 }
 .ui-state-default .clientsColumn{
 	white-space: auto;
@@ -69,7 +76,8 @@ div#centerlayot{
 }
 .ui-datatable td,.ui-datatable th {
     white-space: pre-wrap !important;
-    max-width: 400px;
+    max-width: 300px !important; 
+    padding: 1px !important;
 }
 .ui-datatable .clientColumn{
 	width: 100px !important;
@@ -108,6 +116,19 @@ th#realization:realizTable:j_idt56{
 {    
     margin-left: 5px !important;
     position: relative !important;
+}
+.not-resident {
+    background-color:#98FB98 !important; //green
+    background-image:none !important;
+    color:#000000 !important;
+}
+.ui-datatable .ui-datatable-footer {
+	text-align: right !important;	
+	font-size: 12pt;
+}
+.ui-datatable .ui-datatable-footer span{
+	color: red;
+	font-style: italic;
 }
 /*
 .command{

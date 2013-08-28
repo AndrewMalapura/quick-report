@@ -12,4 +12,7 @@
 .ui-datatable .ui-sortable-column div .ui-dt-c {
    padding-right: 15px !important;
  }
+ .ui-datatable table{
+  border-collapse: collapse !important; 
+ }
  

@@ -1,6 +1,7 @@
 package opo.vistec;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -72,6 +73,7 @@ public class SessionBean implements Serializable {
 	Invent selectedInvent;
 	// Коллекции ордеров (налоговая)
 	public List<Invoice> ordersList;
+	public BigDecimal sum_realiz;
 	
 	// Основная страница с динамическим контентом(layoutUnit "centerlayot")  
 	private String currentPage = "/pages/customers.xhtml";
@@ -132,16 +134,16 @@ public class SessionBean implements Serializable {
     }
     public void viewRealization(){
     	loadRealization();
-    	System.out.println("orders size: "+orders.size()+"  "+startDate+" - "+endDate);
+    	sum_realiz = new BigDecimal(0);
+    	for (SalesLine order : orders) {
+    		sum_realiz = sum_realiz.add(order.getCost_nds());
+		}
     	currentPage = "/pages/realization.xhtml";
     	addMessage("Реализация за период");
-    }
-    
-    
+    } 
     public void delete() {  
         addMessage("Data deleted");  
-    }  
-      
+    }       
 	public void addMessage(String summary) {  
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);  
         FacesContext.getCurrentInstance().addMessage(null, message);  
@@ -165,8 +167,7 @@ public class SessionBean implements Serializable {
 	public void loadInvent(){
 		inventList = inventBO.findAllInvents();
 	}
-	public void loadOrders(){	
-		//OrderId id = new OrderId("868/08", "1013"); 
+	public void loadOrders(){ 
 		ordersList = invoiceBO.findAllOrders();
 		System.out.println("size="+ordersList.size());
 		int i = 0;
@@ -255,6 +256,14 @@ public class SessionBean implements Serializable {
 
 	public void setOrdersList(List<Invoice> ordersList) {
 		this.ordersList = ordersList;
+	}
+
+	public BigDecimal getSum_realiz() {
+		return sum_realiz;
+	}
+
+	public void setSum_realiz(BigDecimal sum_realiz) {
+		this.sum_realiz = sum_realiz;
 	}
 
 	public List<Invent> getFilteredInvent() {

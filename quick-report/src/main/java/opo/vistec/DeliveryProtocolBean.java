@@ -1,4 +1,4 @@
-package opo.vistec;
+﻿package opo.vistec;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -23,7 +23,7 @@ public class DeliveryProtocolBean implements Serializable {
 	
 	SalesLineBo salesLineBO;
 	
-	private List<SalesLine> sold; // ��������� ��������� 
+	private List<SalesLine> sold; // коллекция позиций заказов 
     private BigDecimal wholesale_price;  /// ������� ����
     private Date start;
     private Date end;
