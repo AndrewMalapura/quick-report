@@ -25,8 +25,17 @@ div#centerlayot{
 .ui-datatable table > thead th{
 	min-height: 30px ;
 }
+.ui-datepicker{
+	width: 200px !important;
+	height: 220px !important;
+	font-size: 10pt !important;
+}
+.ui-dialog .ui-dialog-content{
+	padding-bottom: 10px;
+}
 .order-table table{   
 	border-collapse: collapse !important;
+	padding-bottom: 5px;
 }
 .order-table-header{
 	text-align:center;
@@ -39,16 +48,17 @@ div#centerlayot{
 .order-table-odd-row td{
 	text-align:center;
 	background:none repeat scroll 0 0 #FFFFFFF;
-	border-top:1px solid #000;
+	border:1px solid #000;
 }
-.order-table-even-row{
+.order-table-even-row td{
 	text-align:center;
 	background:none repeat scroll 0 0 #F9F9F9;
-	border-top:1px solid #000;
+	border:1px solid #000;
 } 
 #sorted-table > div{
 	height: auto !important;
 	overflow: hidden;
+	text-align: left;
 }
 #sorted-table:dataTable{
 	overflow: auto;
@@ -78,6 +88,9 @@ div#sorted-table:lines{
 	border-collapse: collapse !important;
 	font-size: 10pt;
 	max-width: 700px;
+}
+.ui-overlay-visible td{
+	font-size: 9pt;
 }
 .order-table table{
 	font-weight: 600;
@@ -168,6 +181,10 @@ div.ui-datatable-tablewrapper{
 	}
 	.command table{	
 	   margin: 0 auto;
+	}
+	.ui-growl {
+	   z-index: 2090 !important;
+	   top: 5px !important;
 	}
 /*
 .command td{
