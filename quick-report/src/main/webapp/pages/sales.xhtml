@@ -11,6 +11,7 @@
     </h:head>
 <h:body>
 <ui:composition>
+<span class="page_title">Заказы</span>
 <h:form id="sorted-table" style="font-size: 8pt;">  
 	<p:contextMenu for="salesTab">  
         <p:menuitem value="Показать" update="sale-dialog" icon="ui-icon-search" oncomplete="salesDialog.show()"/>  
@@ -44,9 +45,13 @@
         </p:column>
         
         <p:column sortBy="#{sales.deliverydate}" headerText="Дата заказа" filterBy="#{sales.deliverydate}">  
-            <h:outputText value="#{sales.deliverydate}" />  
+            <h:outputText value="#{sales.deliverydate}">
+             <f:convertDateTime pattern="dd.MM.yyyy" timeZone="Europe/Kiev"/> 
+             </h:outputText> 
         </p:column>
-        
+        <p:column sortBy="#{sales.salesman}" headerText="менеджер" filterBy="#{sales.salesman}">  
+            <h:outputText value="#{sales.salesman}" />  
+        </p:column>
         <p:column sortBy="#{sales.contractaccount.contractnumber}" headerText="№ договора" filterBy="#{sales.contractaccount.contractnumber}">  
             <h:outputText value="#{sales.contractaccount.contractnumber}" />  
         </p:column> 
@@ -57,12 +62,14 @@
     </p:blockUI> 
     
     <p:dialog header="Детали заказа #{sessionBean.selectedSale.salesid}" widgetVar="salesDialog" resizable="true"  
-              width="600" height="500" showEffect="clip" hideEffect="fold" id="sale-dialog">  
-  
+               styleClass="sale-dlg" showEffect="clip" hideEffect="fold" id="sale-dialog">  
+  			
         <h:panelGrid id="display" columns="2" cellpadding="4" style="margin: 0;">  
   			
-  			<h:outputText value="Дата заказа: " />  
-            <h:outputText value="#{sessionBean.selectedSale.deliverydate}" style="font-weight:bold"/>
+  			<h:outputText value="Дата заказа: " /> 
+            <h:outputText value="#{sessionBean.selectedSale.deliverydate}" style="font-weight:bold">
+            <f:convertDateTime pattern="dd.MM.yy" timeZone="Europe/Kiev" />
+            </h:outputText> 
   			
   			<h:outputText value="Клиент: " />  
             <h:outputText value="#{sessionBean.selectedSale.custaccount.name}" style="font-weight:bold"/>
@@ -75,21 +82,43 @@
   
             <h:outputText value="Валюта: " />  
             <h:outputText value="#{sessionBean.selectedSale.currencycode}" style="font-weight:bold"/>
-            </h:panelGrid>   
-  			<p:panel id="lines">
-  		<table border="1" width="100%" >
-		<tr><th>Номенклатура</th><th>Кол-во</th><th>Ед. изм</th><th>Цена</th><th>Сумма</th></tr>  	
-  	<ui:repeat value="#{sessionBean.selectedSale.salesList}" var="str">
-        <tr>
-          <td><h:outputText value="#{str.itemid.itemname}" style="font-weight:bolder"/></td>
-          <td><h:outputText value="#{str.qty}" style="font-weight:normal"/></td>
-          <td><h:outputText value="#{str.unitid}" style="font-weight:normal"/></td>
-          <td><h:outputText value="#{str.price}" style="font-weight:normal"/></td>
-          <td><h:outputText value="#{str.cost}" style="font-weight:normal"/></td>
-        </tr>
-    </ui:repeat>
-      </table>
-      </p:panel>
+            </h:panelGrid> 
+            <h:dataTable value="#{sessionBean.selectedSale.salesList}" var="str"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Номенклатура</f:facet>
+    				<!-- row record -->
+    				<h:outputText value="#{str.itemid.itemname}" />
+    			</h:column>
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Кол-во</f:facet>
+    				<!-- row record -->
+    				<h:outputText value="#{str.qty}" />
+    			</h:column>
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Ед. изм.</f:facet>
+    				<!-- row record -->
+    				<h:outputText value="#{str.unitid}" />
+    			</h:column>
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Цена</f:facet>
+    				<!-- row record -->
+    				<h:outputText value="#{str.price}" />
+    			</h:column>
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Сумма</f:facet>
+    				<!-- row record -->
+    				<h:outputText value="#{str.cost}" />
+    			</h:column>
+    		</h:dataTable>	
+    		  
     </p:dialog>  
 </h:form>
 </ui:composition>

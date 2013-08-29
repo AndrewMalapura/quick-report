@@ -1,6 +1,7 @@
 package opo.vistec.dao.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -16,14 +17,23 @@ public class SalesDaoImpl extends HibernateDaoSupport implements SalesDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Sales> findAllSales() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-		Date date=new Date();        
+	//	SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+		
+		Date date = new Date(); 
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MONTH, -3);
+		cal.setTime(date);
+		System.out.println(cal);
+	/*	int month = cal.get(Calendar.MONTH);
+		int year = cal.get(Calendar.YEAR);
+		
 		try {
-		    date = sdf.parse("01.01.2013");           
+		    date = sdf.parse("01."+month+"."+year);           
 		}catch (Exception e) {
 		    e.printStackTrace();
-		}   
-		return getHibernateTemplate().find("from Sales s where s.deliverydate > ?", date);
+		}   */
+		return getHibernateTemplate().find("from Sales s where s.deliverydate >= ?", date);
 	}
 
 	@SuppressWarnings("unchecked")

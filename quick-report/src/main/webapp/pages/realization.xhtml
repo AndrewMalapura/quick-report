@@ -7,9 +7,9 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <f:view contentType="text/html">
     <h:head>
-        <h:outputStylesheet library="css" name="akt-style.css" target="head" />
-    	<h:outputStylesheet library="css" name="app-style.css" target="head" />
+        <h:outputStylesheet library="css" name="app-style.css" target="head" />
     </h:head>
 <h:body>
 <h:form id="realization" header="realization">
@@ -94,7 +94,7 @@
             <span>Итого : </span><h:outputText value="#{sessionBean.sum_realiz}" />  
         </f:facet>            
    </p:dataTable>  
-	<p:blockUI block="realizTable" trigger="realizTable">  
+	<p:blockUI block=":centerlayot" trigger="realization:b_realiz">  
         <h:graphicImage library="images" name="table-loader.GIF"/>  
     </p:blockUI> 
 	<p:panel header="Экспорт в Excel"> 
@@ -105,4 +105,5 @@
 	</p:panel>  
 	</h:form> 
 </h:body>
+</f:view>
 </html>

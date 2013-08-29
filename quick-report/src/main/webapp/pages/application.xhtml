@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view contentType="text/html"> 
     <h:head>
     	<h:outputStylesheet library="css" name="app-style.css" target="head" />
     </h:head>
@@ -48,7 +49,7 @@
 		</p:panel> 
 	</p:layoutUnit>
 </p:layout> 
-		<p:blockUI block=":centerlayot" trigger=":menu:allsale,:menu:allinvent,:menu:allcust,:menu:allcontract" widgetVar="blockUIWidget">
+		<p:blockUI block=":centerlayot" trigger=":menu:allsale,:menu:allinvent,:menu:allcust,:menu:allcontract,:menu:orders" widgetVar="blockUIWidget">
 		    <h:panelGrid columns="2">  
 		        <h:graphicImage library="images" name="ajax-loader.GIF"  
 		                        style="margin-right: 12px; vertical-align: middle;"/>  
@@ -56,4 +57,5 @@
 		    </h:panelGrid>    
 		</p:blockUI>   
 	</h:body>
+   </f:view>
 </html>

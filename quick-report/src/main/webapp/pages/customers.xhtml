@@ -8,6 +8,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 <ui:composition>
+<span class="page_title">Справочник клиентов</span>
 <h:form id="sorted-table" style="font-size: 8pt;">  
     <p:dataTable id="dataTable" var="customer" value="#{sessionBean.custList}" sortMode="multiple" widgetVar="custTable"   
             emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredCustomers}" 

@@ -75,8 +75,8 @@ public class SessionBean implements Serializable {
 	public List<Invoice> ordersList;
 	public BigDecimal sum_realiz;
 	
-	// Основная страница с динамическим контентом(layoutUnit "centerlayot")  
-	private String currentPage = "/pages/customers.xhtml";
+	// страница по умолчанию   
+	private String currentPage = "/pages/realization.xhtml";
 	
 	
 	public void onRowSelect(SelectEvent event) {  

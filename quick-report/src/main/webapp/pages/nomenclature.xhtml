@@ -8,6 +8,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 <ui:composition>
+<span class="page_title">Справочник номенклатурных единиц</span>
 <h:form id="sorted-table" style="font-size: 8pt;">  
     <p:dataTable id="invent" var="invent" value="#{sessionBean.inventList}" sortMode="multiple" widgetVar="inventTable"   
             emptyMessage="Нет данных для отображения" filteredValue="#{sessionBean.filteredInvent}" 
@@ -18,18 +19,27 @@
                 <p:inputText id="globalFilter" onkeyup="inventTable.filter()" style="width:150px; " />  
             </p:outputPanel>  
         </f:facet>   
-        <p:column id="itemid" sortBy="#{invent.itemid}" headerText="ID" filterBy="#{invent.itemid}">  
+        <p:column id="itemid" sortBy="#{invent.itemid}" headerText="Ном. номер" filterBy="#{invent.itemid}">  
             <h:outputText value="#{invent.itemid}" />  
         </p:column>  
-  
+  		<p:column id="itemgroupid" sortBy="#{invent.itemgroupid}" headerText="Ном. группа" filterBy="#{invent.itemgroupid}">  
+            <h:outputText value="#{invent.itemgroupid}" />  
+        </p:column>
         <p:column sortBy="#{invent.itemname}" headerText="Название" filterBy="#{invent.itemname}"> 
             <h:outputText value="#{invent.itemname}" />  
         </p:column>  
-  
+  		
         <p:column sortBy="#{invent.salesunitid}" headerText="Ед. измерения" filterBy="#{invent.salesunitid}">  
             <h:outputText value="#{invent.salesunitid}" />  
-        </p:column> 
-        
+        </p:column>
+        <p:column sortBy="#{invent.saleslocationid}" headerText="Склад" filterBy="#{invent.saleslocationid}">  
+            <h:outputText value="#{invent.saleslocationid}" />  
+        </p:column>  
+        <p:column sortBy="#{invent.createddate}" headerText="Дата создания" filterBy="#{invent.createddate}">  
+            <h:outputText value="#{invent.createddate}">
+              <f:convertDateTime pattern="dd.MM.yy" timeZone="Europe/Kiev" />
+            </h:outputText>  
+        </p:column>
         <p:column sortBy="#{invent.nds}" headerText="НДС" filterBy="#{invent.nds}">  
             <h:outputText value="#{invent.nds}" />  
         </p:column>  
