@@ -25,7 +25,8 @@
     	<f:facet name="header">  
             <p:outputPanel style="float:right; text-align:center;"> 
             	<h:graphicImage alt="search" library="images" name="magnifier.png" />
-                <p:inputText id="globalFilter" onkeyup="saleTable.filter()" style="width:150px; " />  
+                <p:inputText id="globalFilter" onkeyup="if (event.keyCode == 13)saleTable.filter()" style="width:150px; "
+                title="Введите и нажмите enter" />  
             </p:outputPanel>  
         </f:facet>   
         <p:column sortBy="#{sales.salesid}" headerText="Заказ" filterBy="#{sales.salesid}">  

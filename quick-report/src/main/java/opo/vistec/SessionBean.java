@@ -116,6 +116,7 @@ public class SessionBean implements Serializable {
         addMessage("Номенклатуры");  
     }
     public void viewCustomers() {     //  перейти на страницу клиенты
+    	if(custList == null) loadCustomers();
     	currentPage = "/pages/customers.xhtml";
         addMessage("Клиенты завода");  
     }    
@@ -130,7 +131,7 @@ public class SessionBean implements Serializable {
     public void viewSales(){		//   перейти на страницу заказы
     	if(salesList==null) loadSales();    	
     	currentPage = "/pages/sales.xhtml";
-    	addMessage("Все заказы"); 
+    	addMessage("Заказы за последние 3 месяца"); 
     }
     public void viewRealization(){
     	loadRealization();

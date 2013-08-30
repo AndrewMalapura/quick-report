@@ -47,12 +47,12 @@ div#centerlayot{
 }
 .order-table-odd-row td{
 	text-align:center;
-	background:none repeat scroll 0 0 #FFFFFFF;
+	background:none repeat scroll 0 0 #FFFFFF;
 	border:1px solid #000;
 }
 .order-table-even-row td{
 	text-align:center;
-	background:none repeat scroll 0 0 #F9F9F9;
+	background:none repeat scroll 0 0 #F0FFFF;
 	border:1px solid #000;
 } 
 #sorted-table > div{
@@ -185,6 +185,13 @@ div.ui-datatable-tablewrapper{
 	.ui-growl {
 	   z-index: 2090 !important;
 	   top: 5px !important;
+	}
+	.ui-dialog-titlebar {
+	   font-size: 10pt !important;
+	   color: #363636;
+	}
+	.ui-menuitem-text:hover{
+		font-weight: bold;
 	}
 /*
 .command td{
